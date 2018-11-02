@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# `rfkill list bluetooth` shows two results, but they seem to always have the
+# same status, so just use the first one...
+blocked=$(rfkill list bluetooth | grep Soft | awk '{ print $3 }' | head -n1)
+
+case "$blocked" in
+    yes) sudo rfkill unblock bluetooth ;;
+    no)  sudo rfkill block bluetooth ;;
+    * ) echo $blocked not recognised ;;
+esac

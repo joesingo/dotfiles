@@ -1,0 +1,85 @@
+#!/bin/bash
+
+die() {
+    echo "cwp: $@" >&2
+    exit 1
+}
+
+usage() {
+    cat <<EOF
+Usage: cwp [options] [file]
+Change desktop wallpaper.
+
+If a file is given, change wallpaper to that file and exit. If no file is
+given, change to a random picture in the wallpaper directory previously set
+with -w
+
+Options:
+  -h        Show this help and exit
+  -t NUM    Change wallpaper to a random picture every NUM minutes
+  -w DIR    Set the wallpaper directory
+EOF
+}
+
+# Use feh to change the wallpaper, and update the current wallpaper symlink
+set_wallpaper_to_file() {
+    rm -f "$current_wallpaper"
+    feh --bg-fill --no-fehbg "$1" && ln -s "$1" "$current_wallpaper"
+}
+
+# Rotate the wallpaper queue
+next_wallpaper() {
+    if [[ ! -f "$queue_file" ]]; then
+        die "wallpaper directory not set: use cwp -w DIR"
+    fi
+    next=$(head -n1 "$queue_file")
+    set_wallpaper_to_file "$next" || die "failed to set wallpaper"
+    temp=`mktemp`
+    tail -n +2 "$queue_file" > "$temp"
+    echo "$next" | cat "$temp" - > "$queue_file"
+}
+
+cwp_dir="$HOME/.local/share/cwp"
+queue_file="$cwp_dir/queue.txt"
+current_wallpaper="$cwp_dir/current_wallpaper"
+
+if [[ ! -d $cwp_dir ]]; then
+    mkdir -p "$cwp_dir"
+fi
+
+new_wallpaper_dir=""
+repeat_time=""
+
+while getopts "ht:w:" arg; do
+    case "$arg" in
+        h)  usage; exit 0;;
+        t)  repeat_time="$OPTARG";;
+        w)  new_wallpaper_dir=$(realpath "$OPTARG");;
+        \?) usage >&2
+           exit 1;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+# Check for illegal argument combinations
+if [[ -n $1 && -n $repeat_time ]]; then
+    die "cannot use -t and specify a file on command line"
+fi
+
+if [[ -n "$new_wallpaper_dir" ]]; then
+    find "$new_wallpaper_dir" -type f | shuf -o "$queue_file"
+fi
+
+if [[ -n $1 ]]; then
+    set_wallpaper_to_file "$1" || die "failed to change wallpaper"
+
+elif [[ -n "$repeat_time" ]]; then
+    while true; do
+        next_wallpaper
+        sleep "${repeat_time}m" || die "invalid time interval: $repeat_time"
+    done;
+
+else
+    next_wallpaper
+fi

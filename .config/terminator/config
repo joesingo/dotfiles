@@ -1,0 +1,32 @@
+[global_config]
+  borderless = True
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  focus = mouse
+[keybindings]
+  move_tab_left = <Primary><Shift>h
+  move_tab_right = <Primary><Shift>l
+  new_tab = <Primary><Shift>t
+  next_tab = <Primary>Tab
+  prev_tab = <Primary><Shift>Tab
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#002b36"
+    background_darkness = 0.84
+    background_image = None
+    copy_on_selection = True
+    font = Monaco 11
+    foreground_color = "#839496"
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False

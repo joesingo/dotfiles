@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function usage {
+    echo "Usage: $0 N [FILE]"
+    echo ""
+    echo "Print the Nth line of FILE, or stdin if FILE is not provided"
+    exit 1
+}
+
+n=$1
+file=$2
+
+if [[ -z $n ]]; then
+    usage
+fi
+
+if [[ -z $file ]]; then
+    file="/dev/stdin"
+fi
+
+cat "$file" | head -n"$n" | tail -n1

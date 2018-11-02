@@ -1,0 +1,15 @@
+#!/usr/bin/fish
+
+set argc (count $argv)
+if math "$argc < 1" > /dev/null
+    echo "Usage: monitor-ctl (enable | disable)"
+    exit 1
+end
+
+switch $argv
+    case "enable"
+        xrandr --output HDMI-1 --right-of eDP-1 --auto --primary
+
+    case "disable"
+        xrandr --output HDMI-1 --off
+end

@@ -1,0 +1,9 @@
+#!/bin/bash
+id="70:26:05:56:44:DF"
+if pacmd list-cards | grep bluez >/dev/null; then
+    echo "disconnecting..."
+    bluetoothctl <<< "disconnect $id" && sleep 5
+fi
+
+echo "connecting..."
+bluetoothctl <<< "connect $id"
