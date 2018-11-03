@@ -35,6 +35,8 @@ config.bind('K', 'tab-next')
 
 c.downloads.location.directory = "~/downloads"
 
+c.content.pdfjs = True
+
 c.url.searchengines = {
     "DEFAULT": "https://google.co.uk/search?q={}",
     "yt": "https://www.youtube.com/results?search_query={}"
