@@ -570,8 +570,15 @@
       </action>
     </keybind>
     <keybind key="W-c">
+      <action name="ToggleShowDesktop"/>
+      <action name="Focus"/>
+      <action name="Raise"/>
+      <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>center</x>
+        <y>0</y>
+        <height>100%</height>
+        <width>50%</width>
       </action>
     </keybind>
   </keyboard>
