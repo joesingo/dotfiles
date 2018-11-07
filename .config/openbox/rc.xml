@@ -337,6 +337,11 @@
         <command>toggle-panel.sh</command>
       </action>
     </keybind>
+    <keybind key="W-x">
+      <action name="Execute">
+        <command>xfce4-session-logout --suspend</command>
+      </action>
+    </keybind>
     <keybind key="W-S-x">
       <action name="Execute">
         <command>xfce4-session-logout</command>
