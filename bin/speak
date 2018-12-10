@@ -1,0 +1,4 @@
+#!/bin/bash
+t="`mktemp -u`.wav"
+pico2wave -w "$t" -l en-GB "$*" && aplay "$t"
+rm "$t"

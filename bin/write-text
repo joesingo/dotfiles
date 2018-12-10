@@ -1,0 +1,3 @@
+#!/bin/bash
+t="/tmp/write-text-`date +%s`"
+gvim --nofork "$t" && xsel -ib < "$t"
