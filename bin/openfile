@@ -10,7 +10,6 @@ EOF
 
 # find_files DIR [EXT]
 find_files() {
-    echo "$2"
     if [[ -n $2 ]]; then
         find "$1" -type f -name "*.$2"
     else
@@ -23,10 +22,10 @@ if [[ $1 == "-h" || $1 == "--help" ]]; then
     exit 0
 fi
 
-dir="$HOME"
+dir="$PWD"
 ext="$1"
 
-f=$(find_files "$dir" "$ext" | fzf)
+f=$(find_files "$dir" "$ext" 2>/dev/null | fzf)
 if [[ -z $f ]]; then
     echo "no file selected" >&2
     exit 1

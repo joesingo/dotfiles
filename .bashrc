@@ -17,6 +17,7 @@ alias md="python -m markdown"
 alias diff="colordiff"
 alias httpd="python3 -m http.server"
 alias arduino-upload="sudo arduino --port /dev/ttyACM* --upload"
+alias notes_iwatch="cd ~/notes/content && iwatch -r -c '~/coding/mdss/venv/bin/mdss /tmp/w' ."
 
 av() {
     source "$1/venv/bin/activate"

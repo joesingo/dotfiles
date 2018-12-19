@@ -31,7 +31,7 @@
   </placement>
   <theme>
     <name>Nightmare</name>
-    <titleLayout>NLIMC</titleLayout>
+    <titleLayout>NLMCI</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
       N: window icon
@@ -427,7 +427,7 @@
       <action name="Raise"/>
     </keybind>
     <keybind key="W-u">
-      <action name="ToggleFullscreen"/>
+      <action name="ToggleDecorations"/>
     </keybind>
     <keybind key="W-l">
       <action name="Unmaximize"/>
@@ -1043,6 +1043,9 @@
 
   # end of the example
 -->
+    <application name="*">
+      <decor>no</decor>
+    </application>
     <application name="terminator">
       <decor>no</decor>
       <!-- Start terminals maximised. Note that window can still be resized
