@@ -7,6 +7,9 @@ if [[ -n $DISPLAY && ! $TERM = *256color ]]; then
     export TERM=${TERM}-256color
 fi
 
+recipes_dir="$HOME/coding/recipes"
+export RECIPE_CONTENT="$HOME/coding/recipe_content"
+
 alias ll="ls -l"
 alias la="ls -a"
 alias lspdf="ls -lt *.pdf"
@@ -18,6 +21,8 @@ alias diff="colordiff"
 alias httpd="python3 -m http.server"
 alias arduino-upload="sudo arduino --port /dev/ttyACM* --upload"
 alias notes_iwatch="cd ~/notes/content && iwatch -r -c '~/coding/mdss/venv/bin/mdss /tmp/w' ."
+alias recipes_es="sudo docker run -d -p 9200:9200 -e discovery.type=single-node docker.elastic.co/elasticsearch/elasticsearch:6.1.1"
+alias recipes_site="$recipes_dir/venv/bin/python $recipes_dir/run_site.py"
 
 av() {
     source "$1/venv/bin/activate"
