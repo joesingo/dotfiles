@@ -39,7 +39,8 @@ c.content.pdfjs = True
 
 c.url.searchengines = {
     "DEFAULT": "https://google.co.uk/search?q={}",
-    "yt": "https://www.youtube.com/results?search_query={}"
+    "yt": "https://www.youtube.com/results?search_query={}",
+    "sch": "https://scholar.google.co.uk/scholar?hl=en&q={}"
 }
 c.url.default_page = "https://google.co.uk"
 c.url.start_pages = "https://google.co.uk"
