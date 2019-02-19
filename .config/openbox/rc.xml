@@ -415,6 +415,39 @@
       </action>
     </keybind>
     <!-- Keybindings for resizing and moving windows -->
+    <keybind key="W-1">
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <height>100%</height>
+        <width>33%</width>
+      </action>
+      <action name="Focus"/>
+      <action name="Raise"/>
+    </keybind>
+    <keybind key="W-2">
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <x>33%</x>
+        <y>0</y>
+        <height>100%</height>
+        <width>33%</width>
+      </action>
+      <action name="Focus"/>
+      <action name="Raise"/>
+    </keybind>
+    <keybind key="W-3">
+      <action name="Unmaximize"/>
+      <action name="MoveResizeTo">
+        <x>66%</x>
+        <y>0</y>
+        <height>100%</height>
+        <width>34%</width>
+      </action>
+      <action name="Focus"/>
+      <action name="Raise"/>
+    </keybind>
     <keybind key="W-h">
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
