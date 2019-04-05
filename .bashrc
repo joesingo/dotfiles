@@ -1,6 +1,6 @@
 export PS1="\[$(tput bold)\]\[\033[01;32m\]\u@\h\[$(tput sgr0)\]:\[\033[01;34m\]\w\[$(tput sgr0)\]$ "
 export LESS="-iR"
-export PATH="~/bin:${PATH}"
+export PATH="~/bin:${PATH}:/usr/local/go/bin"
 export EDITOR="/usr/bin/vim"
 
 if [[ -n $DISPLAY && ! $TERM = *256color ]]; then
@@ -12,10 +12,11 @@ export RECIPE_CONTENT="$HOME/coding/recipe_content"
 
 alias ll="ls -l"
 alias la="ls -a"
+alias grep="grep --color=auto -I"
 alias lspdf="ls -lt *.pdf"
 alias rm_swp="find . -name "*.swp" -delete"
 alias tping="ping 8.8.8.8"
-alias findall="grep -inrC 5 --color=always --exclude-dir=venv --exclude-dir=".git" --exclude="*.pyc" -- "
+alias findall="grep -I -inrC 5 --color=always --exclude-dir=venv --exclude-dir=".git" --exclude="*.pyc" -- "
 alias md="python -m markdown"
 alias diff="colordiff"
 alias httpd="python3 -m http.server"
@@ -35,4 +36,27 @@ bf_minify() {
 
 bf() {
     brainfuck <(bf_minify "$1")
+}
+
+# Usage: <cmd> themepack output_dir
+unpack_windows_wallpaper_theme() {
+    themepack=$(realpath "$1")
+    output_dir=$(realpath "$2")
+    tmp=$(mktemp -d)
+    mkdir -p "$output_dir"
+
+    cab_name="archive.cab"
+    ln -s "$themepack" "$tmp/$cab_name"
+    pushd "$tmp" > /dev/null
+    7z x "$cab_name" > /dev/null
+
+    imgs_dir="DesktopBackground"
+    if [[ ! -d $imgs_dir ]]; then
+        echo "did not find '$imgs_dir' directory" >&2
+        popd > /dev/null
+        return 1
+    fi
+    mv "$imgs_dir"/* "$output_dir"
+    popd > /dev/null
+    rm -r "$tmp"
 }
