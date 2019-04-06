@@ -354,7 +354,7 @@
     </keybind>
     <keybind key="W-t">
       <action name="Execute">
-        <command>terminator</command>
+        <command>st</command>
       </action>
     </keybind>
     <keybind key="W-f">
@@ -1079,7 +1079,7 @@
     <application name="*">
       <decor>no</decor>
     </application>
-    <application name="terminator">
+    <application title="st">
       <decor>no</decor>
       <!-- Start terminals maximised. Note that window can still be resized
            afterwards -->
