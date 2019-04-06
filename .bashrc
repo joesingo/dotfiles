@@ -1,11 +1,7 @@
 export PS1="\[$(tput bold)\]\[\033[01;32m\]\u@\h\[$(tput sgr0)\]:\[\033[01;34m\]\w\[$(tput sgr0)\]$ "
 export LESS="-iR"
 export PATH="~/bin:${PATH}:/usr/local/go/bin"
-export EDITOR="/usr/bin/vim"
-
-if [[ -n $DISPLAY && ! $TERM = *256color ]]; then
-    export TERM=${TERM}-256color
-fi
+export EDITOR="/usr/bin/nvim"
 
 recipes_dir="$HOME/coding/recipes"
 export RECIPE_CONTENT="$HOME/coding/recipe_content"
@@ -24,6 +20,7 @@ alias arduino-upload="sudo arduino --port /dev/ttyACM* --upload"
 alias notes_iwatch="cd ~/notes/content && iwatch -r -c '~/coding/mdss/venv/bin/mdss /tmp/w' ."
 alias recipes_es="sudo docker run -d -p 9200:9200 -e discovery.type=single-node docker.elastic.co/elasticsearch/elasticsearch:6.1.1"
 alias recipes_site="$recipes_dir/venv/bin/python $recipes_dir/run_site.py"
+alias vim="nvim"
 
 av() {
     source "$1/venv/bin/activate"
@@ -59,4 +56,29 @@ unpack_windows_wallpaper_theme() {
     mv "$imgs_dir"/* "$output_dir"
     popd > /dev/null
     rm -r "$tmp"
+}
+
+# Change colour scheme for st and recompile. Uses base16-st colour schemes
+# List available: <cmd>
+# Change:         <cmd> <name>
+st_colorscheme() {
+    st_source="/home/joe/coding/apps/st"
+    colours_dir="/home/joe/coding/apps/base16-st/build"
+    name="$1"
+    if [[ -z $name ]]; then
+        pushd "$colours_dir" > /dev/null
+        find . -type f -name "*.h"
+        popd > /dev/null
+        return
+    fi
+
+    colour_scheme="$colours_dir/$name"
+    if [[ ! -f $colour_scheme ]]; then
+        echo "colour scheme not found at '$colour_scheme'" >&2
+        return 1
+    fi
+
+    pushd "$st_source" > /dev/null
+    ln -fs "$colour_scheme" "colourscheme.h" && sudo make clean install
+    popd > /dev/null
 }
