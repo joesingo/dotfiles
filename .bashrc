@@ -81,4 +81,10 @@ st_colorscheme() {
     pushd "$st_source" > /dev/null
     ln -fs "$colour_scheme" "colourscheme.h" && sudo make clean install
     popd > /dev/null
+
+    # Write name of current theme to a file, so that vimrc can load the
+    # corresponding vim theme
+    state_dir="$HOME/.local/share/b16_theme"
+    mkdir -p "$state_dir"
+    echo "$name" | sed 's,\./,,; s,\-theme\.h$,,' > "$state_dir/current_theme"
 }
