@@ -1,3 +1,5 @@
+filetype plugin on
+
 let sourceme = $HOME . "/.vim/bundle/vim-setup/sourceme.vim"
 execute "source" sourceme
 
@@ -147,9 +149,6 @@ vmap Q qcgn
 noremap :W :w
 noremap :Q :q
 
-" To allow commentstring to be set automatically
-filetype plugin on
-
 " Don't have spaces inside brackes when using surround plugin
 let g:surround_40 = "(\r)"
 let g:surround_91 = "[\r]"
@@ -162,6 +161,8 @@ let g:gitgutter_diff_args = "-w"
 " updatetime is used by GitGutter plugin: make short so that it
 " is more responsive
 set updatetime=200
+
+let g:markdown_enable_mappings = 1
 
 " Settings useful for writing plain text files
 function WriteText()
