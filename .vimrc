@@ -49,14 +49,15 @@ noremap <esc>[ <esc>[
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
-" Stop CtrlP searching in python virtualenvs, conda and LaTeX junk
-" envs,and ignore .pyc and .beam files
-set wildignore+=*/venv/*
-set wildignore+=*/conda/*
+" Stop CtrlP searching for binary files, compilation artefacts, LaTeX junk,
+" and in python virtualenvs and conda envs
+set wildignore+=*.png,*.jpg,*.gif
 set wildignore+=*.pyc
 set wildignore+=*.beam
 set wildignore+=*.class
-set wildignore+=*.blg,*.bbl,*.out,*.log,*.aux,*.pdf,*.toc
+set wildignore+=*.blg,*.bbl,*.out,*.log,*.aux,*.pdf,*.toc,*.bcf,*.run.xml
+set wildignore+=*/venv/*
+set wildignore+=*/conda/*
 let g:ctrlp_custom_ignore = ''
 
 " Always start CtrlP in current directory
@@ -103,6 +104,10 @@ noremap <C-k> <C-y>
 " Make Y behave like C, D
 noremap Y y$
 
+" I don't see the point in selecting the newline with '$'... make it behave
+" like 'g_' instead
+noremap $ g_
+
 " Add a new line above/below
 map [<Space> O<Esc>j
 map ]<Space> o<Esc>k
@@ -133,14 +138,6 @@ vnoremap A :call CreateVariable()<CR>
 " Operator to select whole line
 onoremap il :norm ^vg_<cr>
 
-" Delete any whitespace at the start of the line
-" and delete the preceding newline (Move line to
-" end of previous)
-noremap M ^d0i<BS><Space><Esc>
-
-" Save with Ctrl-s
-noremap <C-s> :w<CR>
-
 " Search for selection
 vnoremap q "jy/<C-r>j<CR>N
 " Search for selection and start editing (repeat with n and .)
@@ -148,6 +145,14 @@ vmap Q qcgn
 
 noremap :W :w
 noremap :Q :q
+noremap :BD :bd
+
+" LaTeX editing mappings
+" Italics and bold with Ctrl-I and Ctrl-B in visual mode
+vmap <C-i> S{i\emph<Esc>f{l
+vmap <C-b> S{i\textbf<Esc>f{l
+" Add footnote
+noremap <Leader>n i\footnotemark{}<Esc>}O<CR>\footnotetext{<CR>}<Esc>O<Tab>
 
 " Don't have spaces inside brackes when using surround plugin
 let g:surround_40 = "(\r)"
@@ -203,7 +208,7 @@ endfunction
 noremap <Leader>c :call CompileLatexDocument()<CR>
 
 " Run bibtex for a document
-noremap <Leader>b :execute "!bibtex" expand("%:r")<CR>
+noremap <Leader>b :execute "!biber" expand("%:r")<CR>
 
 " Word count of a TeX document
 noremap <Leader>w :write !detex \| wc -w<CR>
@@ -239,4 +244,3 @@ function! Underline()
 endfunction
 
 noremap <Leader>u :call Underline()<CR>
-
