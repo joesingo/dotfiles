@@ -10,7 +10,6 @@ set runtimepath+=/home/joe/.vim/bundle/vim-closetag
 set runtimepath+=/home/joe/.vim/bundle/vim-repeat
 set runtimepath+=/home/joe/.vim/bundle/taboo.vim
 set runtimepath+=/home/joe/.vim/bundle/vim-surround
-set runtimepath+=/home/joe/.vim/bundle/vim-markdown
 set runtimepath+=/home/joe/.vim/bundle/base16-vim
 set runtimepath+=/home/joe/.vim/bundle/vim-allomancer
 set runtimepath+=/home/joe/.vim/bundle/molokai

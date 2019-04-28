@@ -10,7 +10,7 @@ alias ll="ls -l"
 alias la="ls -a"
 alias grep="grep --color=auto -I"
 alias lspdf="ls -lt *.pdf"
-alias rm_swp="find . -name "*.swp" -delete"
+alias rm_swp="find ~/.local/share/nvim/swap -name '*.swp' -delete"
 alias tping="ping 8.8.8.8"
 alias findall="grep -I -inrC 5 --color=always --exclude-dir=venv --exclude-dir=".git" --exclude="*.pyc" -- "
 alias md="python -m markdown"
@@ -59,17 +59,25 @@ unpack_windows_wallpaper_theme() {
 }
 
 # Change colour scheme for st and recompile. Uses base16-st colour schemes
-# List available: <cmd>
-# Change:         <cmd> <name>
+# Usage:  <cmd> [--list] <name>
+# If no name is given, use fzf to do a fuzzy search for themes
 st_colorscheme() {
     st_source="/home/joe/coding/apps/st"
     colours_dir="/home/joe/coding/apps/base16-st/build"
-    name="$1"
-    if [[ -z $name ]]; then
+
+    # List schemes
+    if [[ $1 == "--list" || $1 == "-l" ]]; then
         pushd "$colours_dir" > /dev/null
         find . -type f -name "*.h"
         popd > /dev/null
         return
+    fi
+
+    name="$1"
+    if [[ -z $name ]]; then
+        pushd "$colours_dir" > /dev/null
+        name=$(fzf)
+        popd > /dev/null
     fi
 
     colour_scheme="$colours_dir/$name"
