@@ -55,7 +55,7 @@ set wildignore+=*.png,*.jpg,*.gif
 set wildignore+=*.pyc
 set wildignore+=*.beam
 set wildignore+=*.class
-set wildignore+=*.blg,*.bbl,*.out,*.log,*.aux,*.pdf,*.toc,*.bcf,*.run.xml
+set wildignore+=*.blg,*.bbl,*.out,*.log,*.aux,*.pdf,*.toc,*.bcf,*.run.xml,*.lof
 set wildignore+=*/venv/*
 set wildignore+=*/conda/*
 let g:ctrlp_custom_ignore = ''
@@ -148,11 +148,24 @@ noremap :Q :q
 noremap :BD :bd
 
 " LaTeX editing mappings
-" Italics and bold with Ctrl-I and Ctrl-B in visual mode
-vmap <C-i> S{i\emph<Esc>f{l
-vmap <C-b> S{i\textbf<Esc>f{l
+" Italics and bold with Ctrl-I and Ctrl-B in visual and insert mode
+vmap <C-l> :call SurroundLaTeXCmd()<CR>
+vmap <C-i> :call SurroundLaTeXCmd("emph")<CR>
+vmap <C-b> :call SurroundLaTeXCmd("textbf")<CR>
+" vmap <C-i> S{i\emph<Esc>f{l
+" vmap <C-b> S{i\textbf<Esc>f{l
+inoremap <C-b> \textbf{
 " Add footnote
 noremap <Leader>n i\footnotemark{}<Esc>}O<CR>\footnotetext{<CR>}<Esc>O<Tab>
+
+function! SurroundLaTeXCmd(...)
+    if a:0 == 1
+        let cmd = a:1
+    else
+        let cmd = input("enter tag:")
+    endif
+    execute "normal `<ys`>{f}xpF{i\\" . cmd
+endfunction
 
 " Don't have spaces inside brackes when using surround plugin
 let g:surround_40 = "(\r)"

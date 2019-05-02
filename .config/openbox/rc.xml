@@ -357,6 +357,11 @@
         <command>st</command>
       </action>
     </keybind>
+    <keybind key="A-q">
+      <action name="Execute">
+        <command>st -t window_switcher_popup window_switcher</command>
+      </action>
+    </keybind>
     <keybind key="W-f">
       <action name="Execute">
         <command>Thunar</command>
@@ -1084,6 +1089,19 @@
       <!-- Start terminals maximised. Note that window can still be resized
            afterwards -->
       <maximized>yes</maximized>
+    </application>
+
+    <!-- Popup terminal to run window switcher script -->
+    <application title="window_switcher_popup">
+      <decor>no</decor>
+      <position>
+        <x>0</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>200</width>
+        <height>200</height>
+      </size>
     </application>
   </applications>
 </openbox_config>

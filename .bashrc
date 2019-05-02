@@ -21,6 +21,7 @@ alias notes_iwatch="cd ~/notes/content && iwatch -r -c '~/coding/mdss/venv/bin/m
 alias recipes_es="sudo docker run -d -p 9200:9200 -e discovery.type=single-node docker.elastic.co/elasticsearch/elasticsearch:6.1.1"
 alias recipes_site="$recipes_dir/venv/bin/python $recipes_dir/run_site.py"
 alias vim="nvim"
+alias diss_wc="python3 ~/p/reports/graph_words.py"
 
 av() {
     source "$1/venv/bin/activate"
