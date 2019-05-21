@@ -299,34 +299,23 @@
         </finalactions>
       </action>
     </keybind>
-    <keybind key="C-A-Tab">
-      <action name="NextWindow">
-        <panels>yes</panels>
-        <desktop>yes</desktop>
-        <finalactions>
-          <action name="Focus"/>
-          <action name="Raise"/>
-          <action name="Unshade"/>
-        </finalactions>
-      </action>
-    </keybind>
     <!-- Keybindings for window switching with the arrow keys -->
-    <keybind key="W-A-Right">
+    <keybind key="W-A-l">
       <action name="DirectionalCycleWindows">
         <direction>right</direction>
       </action>
     </keybind>
-    <keybind key="W-A-Left">
+    <keybind key="W-A-h">
       <action name="DirectionalCycleWindows">
         <direction>left</direction>
       </action>
     </keybind>
-    <keybind key="W-A-Up">
+    <keybind key="W-A-k">
       <action name="DirectionalCycleWindows">
         <direction>up</direction>
       </action>
     </keybind>
-    <keybind key="W-A-Down">
+    <keybind key="W-A-j">
       <action name="DirectionalCycleWindows">
         <direction>down</direction>
       </action>
@@ -357,7 +346,7 @@
         <command>st</command>
       </action>
     </keybind>
-    <keybind key="A-q">
+    <keybind key="C-A-Tab">
       <action name="Execute">
         <command>st -t window_switcher_popup window_switcher</command>
       </action>

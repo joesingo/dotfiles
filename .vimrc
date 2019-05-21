@@ -152,8 +152,7 @@ noremap :BD :bd
 vmap <C-l> :call SurroundLaTeXCmd()<CR>
 vmap <C-i> :call SurroundLaTeXCmd("emph")<CR>
 vmap <C-b> :call SurroundLaTeXCmd("textbf")<CR>
-" vmap <C-i> S{i\emph<Esc>f{l
-" vmap <C-b> S{i\textbf<Esc>f{l
+vmap ` :call SurroundLaTeXCmd("texttt")<CR>
 inoremap <C-b> \textbf{
 " Add footnote
 noremap <Leader>n i\footnotemark{}<Esc>}O<CR>\footnotetext{<CR>}<Esc>O<Tab>

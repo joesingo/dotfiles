@@ -18,10 +18,8 @@ alias diff="colordiff"
 alias httpd="python3 -m http.server"
 alias arduino-upload="sudo arduino --port /dev/ttyACM* --upload"
 alias notes_iwatch="cd ~/notes/content && iwatch -r -c '~/coding/mdss/venv/bin/mdss /tmp/w' ."
-alias recipes_es="sudo docker run -d -p 9200:9200 -e discovery.type=single-node docker.elastic.co/elasticsearch/elasticsearch:6.1.1"
-alias recipes_site="$recipes_dir/venv/bin/python $recipes_dir/run_site.py"
+alias recipes="~/coding/text-recipes/venv/bin/recipes"
 alias vim="nvim"
-alias diss_wc="python3 ~/p/reports/graph_words.py"
 
 av() {
     source "$1/venv/bin/activate"
