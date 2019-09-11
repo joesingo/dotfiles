@@ -1,6 +1,6 @@
 export PS1="\[$(tput bold)\]\[\033[01;32m\]\u@\h\[$(tput sgr0)\]:\[\033[01;34m\]\w\[$(tput sgr0)\]$ "
 export LESS="-iR"
-export PATH="~/bin:${PATH}:/usr/local/go/bin"
+export PATH="~/bin:/usr/local/go/bin:/home/joe/.nimble/bin:${PATH}"
 export EDITOR="/usr/bin/nvim"
 
 recipes_dir="$HOME/coding/recipes"
@@ -13,13 +13,13 @@ alias lspdf="ls -lt *.pdf"
 alias rm_swp="find ~/.local/share/nvim/swap -name '*.swp' -delete"
 alias tping="ping 8.8.8.8"
 alias findall="grep -I -inrC 5 --color=always --exclude-dir=venv --exclude-dir=".git" --exclude="*.pyc" -- "
-alias md="python -m markdown"
 alias diff="colordiff"
 alias httpd="python3 -m http.server"
 alias arduino-upload="sudo arduino --port /dev/ttyACM* --upload"
 alias notes_iwatch="cd ~/notes/content && iwatch -r -c '~/coding/mdss/venv/bin/mdss /tmp/w' ."
 alias recipes="~/coding/text-recipes/venv/bin/recipes"
 alias vim="nvim"
+alias screenrecord="ffmpeg -f pulse -ac 2 -i default -f x11grab -framerate 30 -video_size 1920x1080 -i :0.0+1920,0"
 
 av() {
     source "$1/venv/bin/activate"
@@ -32,6 +32,21 @@ bf_minify() {
 
 bf() {
     brainfuck <(bf_minify "$1")
+}
+
+# Usage: message MSG [MINS]
+message() {
+    msg="$1"
+    mins="${2:-5}"
+    (
+        sleep "${mins}m"
+        zenity --info --text="$1" 2>&1 >/dev/null
+    ) &
+}
+
+# Usage: coffee [MINS]
+coffee() {
+    message "Coffee is ready!" $1
 }
 
 # Usage: <cmd> themepack output_dir
