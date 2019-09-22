@@ -30,14 +30,23 @@ set colorcolumn=80,100
 set cuc
 set cul
 
-" Highlight search resluts
+" Search settings
 set hlsearch
+set ignorecase
+set incsearch
+" Stop CtrlP searching for unwanted files
+set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.pyc
+set wildignore+=*.beam
+set wildignore+=*.class
+set wildignore+=*.blg,*.bbl,*.out,*.log,*.aux,*.pdf,*.toc,*.bcf,*.run.xml,*.lof
+set wildignore+=*/venv/*
+set wildignore+=*/conda/*
+set wildignore+=*.hi,*.o
+let g:ctrlp_custom_ignore = ''
 
 " Show normal mode commands as they are typed
 set showcmd
-
-" Show where pattern so far matches when searching
-set incsearch
 
 " Allow backspacing over anything in insert mode
 set backspace=indent,eol,start
@@ -48,17 +57,6 @@ noremap <esc>[ <esc>[
 
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
-
-" Stop CtrlP searching for binary files, compilation artefacts, LaTeX junk,
-" and in python virtualenvs and conda envs
-set wildignore+=*.png,*.jpg,*.gif
-set wildignore+=*.pyc
-set wildignore+=*.beam
-set wildignore+=*.class
-set wildignore+=*.blg,*.bbl,*.out,*.log,*.aux,*.pdf,*.toc,*.bcf,*.run.xml,*.lof
-set wildignore+=*/venv/*
-set wildignore+=*/conda/*
-let g:ctrlp_custom_ignore = ''
 
 " Always start CtrlP in current directory
 let g:ctrlp_working_path_mode = '0'
@@ -126,6 +124,9 @@ function! CreateVariable()
     elseif &filetype == "javascript"
         exe 'normal Ovar ' . var_name . ' = '
         normal "jpA;
+    elseif &filetype == "erlang"
+        exe 'normal O' . var_name . ' = '
+        normal "jpA,
     else
         " Note: same as python for now
         exe 'normal O' . var_name . ' = '
@@ -197,7 +198,7 @@ endfunction
 noremap <Leader>e :call BeginLatexEnvironment()<CR>
 
 " Compile a LaTeX document
-function! CompileLatexDocument()
+function! CompileLatexDocument(prog)
     let extension = expand("%:e")
     let thisdoc = expand("%")
     write
@@ -207,7 +208,7 @@ function! CompileLatexDocument()
             let thisdoc = "main.tex"
         endif
 
-        execute "!pdflatex" thisdoc
+        execute "!" a:prog thisdoc
     elseif extension == "md"
         let basename = fnamemodify(expand("%:t"), ":r")
         let outlatex = "/tmp/" . basename . ".tex"
@@ -217,7 +218,8 @@ function! CompileLatexDocument()
         echo "I don't think you want to do that..."
     endif
 endfunction
-noremap <Leader>c :call CompileLatexDocument()<CR>
+noremap <Leader>c :call CompileLatexDocument("pdflatex")<CR>
+noremap <Leader>v :call CompileLatexDocument("xelatex")<CR>
 
 " Run bibtex for a document
 noremap <Leader>b :execute "!biber" expand("%:r")<CR>
@@ -256,3 +258,7 @@ function! Underline()
 endfunction
 
 noremap <Leader>u :call Underline()<CR>
+
+" Abbreviations
+abbreviate definit def __init__(self,<Space>)
+abbreviate ifnmain if __name__ == "__main__":<CR>  <Space>

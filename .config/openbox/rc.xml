@@ -336,14 +336,19 @@
         <command>xfce4-session-logout</command>
       </action>
     </keybind>
-    <keybind key="W-n">
-      <action name="Execute">
-        <command>speak-nut</command>
-      </action>
-    </keybind>
+    <!-- <keybind key="W-n"> -->
+    <!--   <action name="Execute"> -->
+    <!--     <command>speak-nut</command> -->
+    <!--   </action> -->
+    <!-- </keybind> -->
     <keybind key="W-t">
       <action name="Execute">
         <command>st</command>
+      </action>
+    </keybind>
+    <keybind key="W-o">
+      <action name="Execute">
+        <command>okular</command>
       </action>
     </keybind>
     <keybind key="C-A-Tab">
@@ -529,11 +534,6 @@
         <height>100%</height>
         <width>50%</width>
       </action>
-      <action name="Focus"/>
-      <action name="Raise"/>
-    </keybind>
-    <keybind key="W-o">
-      <action name="ToggleShowDesktop"/>
       <action name="Focus"/>
       <action name="Raise"/>
     </keybind>

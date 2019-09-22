@@ -110,3 +110,37 @@ st_colorscheme() {
     mkdir -p "$state_dir"
     echo "$name" | sed 's,\./,,; s,\-theme\.h$,,' > "$state_dir/current_theme"
 }
+
+# usage:  <cmd>
+# Same idea as st_colorscheme above, but for kitty. In this case fzf is always
+# used
+kitty_colorscheme() {
+    config_dir="/home/joe/.config/kitty"
+    colourschemes="${config_dir}/base16-kitty/colors"
+    include_file="${config_dir}/colourscheme.conf"
+
+    # Prompt for colour scheme with fzf
+    pushd "$colourschemes" > /dev/null
+    name=$(find . -type f -name "*.conf" -not -name "*-256.conf" | fzf)
+    popd > /dev/null
+
+    if [[ -z $name ]]; then
+        return 0
+    fi
+
+    colour_scheme="$colourschemes/$name"
+    if [[ ! -f $colour_scheme ]]; then
+        echo "colour scheme not found at '$colour_scheme'" >&2
+        return 1
+    fi
+
+    # Make included file a symlink to selected scheme
+    ln -fs "$colour_scheme" "$include_file"
+
+    # Write name of current theme to a file, so that vimrc can load the
+    # corresponding vim theme
+    state_dir="$HOME/.local/share/b16_theme"
+    mkdir -p "$state_dir"
+    # Remove './' prefix and '.conf' suffix
+    echo "$name" | sed 's,^\./,,; s,\.conf$,,' > "$state_dir/current_theme"
+}
