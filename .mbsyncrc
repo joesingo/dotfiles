@@ -1,0 +1,116 @@
+#########
+# Gmail #
+#########
+IMAPAccount gmail
+Host imap.gmail.com
+User joesingo@gmail.com
+PassCmd "gpg --no-tty -q -d ~/.config/email/passwords/gmail.gpg"
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# Remote storage
+IMAPStore gmail-remote
+Account gmail
+
+# Local storage
+MaildirStore gmail-local
+Subfolders Verbatim
+Path ~/mail/gmail/
+Inbox ~/mail/gmail/inbox
+
+Channel gmail-inbox
+Master :gmail-remote:"INBOX"
+Slave :gmail-local:inbox
+Create Both
+SyncState *
+Sync All
+
+Channel gmail-primary
+Master :gmail-remote:primary
+Slave :gmail-local:primary
+Create Both
+SyncState *
+Sync All
+
+Channel gmail-social
+Master :gmail-remote:socials  # Note name mismatch: 'social' is a reserved label in Gmail
+Slave :gmail-local:social
+Create Both
+SyncState *
+Sync All
+
+Channel gmail-promotions
+Master :gmail-remote:promotion  # Name mismatch for the same reason
+Slave :gmail-local:promotions
+Create Both
+SyncState *
+Sync All
+
+Channel gmail-sent
+Master :gmail-remote:"[Gmail]/Sent Mail"
+Slave :gmail-local:"Sent Mail"
+Create Slave
+# Gmail SMTP automatically adds email to sent folder, so no need for a
+# bi-directional sync
+Sync Pull
+
+Channel gmail-drafts
+Master :gmail-remote:"[Gmail]/Drafts"
+Slave :gmail-local:Drafts
+Create Slave
+Sync All
+
+Group gmail
+Channel gmail-inbox
+Channel gmail-primary
+Channel gmail-social
+Channel gmail-promotions
+Channel gmail-sent
+Channel gmail-drafts
+
+#################
+# Cardiff email #
+#################
+IMAPAccount cardiff
+Host outlook.office365.com
+User singletonj1@cardiff.ac.uk
+PassCmd "gpg --no-tty -q -d ~/.config/email/passwords/cardiff.gpg"
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# Remote storage
+IMAPStore cardiff-remote
+Account cardiff
+
+# Local storage
+MaildirStore cardiff-local
+Subfolders Verbatim
+Path ~/mail/cardiff/
+Inbox ~/mail/cardiff/inbox
+
+Channel cardiff-inbox
+Master :cardiff-remote:"INBOX"
+Slave :cardiff-local:inbox
+Create Both
+SyncState *
+Sync All
+
+Channel cardiff-drafts
+Master :cardiff-remote:Drafts
+Slave :cardiff-local:drafts
+Create Slave
+Sync All
+
+Channel cardiff-sent
+Master :cardiff-remote:"Sent Items"
+Slave :cardiff-local:sent
+Create Slave
+# Same situation as gmail
+Sync Pull
+
+Group cardiff
+Channel cardiff-inbox
+Channel cardiff-drafts
+Channel cardiff-sent

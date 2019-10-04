@@ -1,0 +1,5 @@
+set from = "joesingo@gmail.com"
+set spoolfile = "+gmail/inbox"
+set postponed = "+gmail/drafts"
+unset record
+set sendmail = "/usr/bin/msmtp -a gmail"
