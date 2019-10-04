@@ -208,7 +208,7 @@ function! CompileLatexDocument(prog)
             let thisdoc = "main.tex"
         endif
 
-        execute "!" a:prog thisdoc
+        execute "!" a:prog "--synctex=1" thisdoc
     elseif extension == "md"
         let basename = fnamemodify(expand("%:t"), ":r")
         let outlatex = "/tmp/" . basename . ".tex"
@@ -258,6 +258,20 @@ function! Underline()
 endfunction
 
 noremap <Leader>u :call Underline()<CR>
+
+function! LogEntry()
+    read !date '+\%d-\%m-\%Y'
+    norm yypv$r-
+endfunction
+
+function! SwitchToBuffer(name, line, column)
+    let n = bufnr(a:name)
+    if n != -1
+        exec "buffer" n
+        exec a:line
+        exec "normal " . a:column . "|"
+    endif
+endfunction
 
 " Abbreviations
 abbreviate definit def __init__(self,<Space>)

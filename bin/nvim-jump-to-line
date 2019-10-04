@@ -1,0 +1,26 @@
+#!/bin/bash
+
+usage() {
+    echo "usage: $0 FILE LINE COLUMN"
+}
+
+if [[ $1 == "-h" || $1 == "--help" ]]; then
+    usage
+    exit 0
+fi
+
+file="$1"
+line="$2"
+column="$3"
+
+if [[ -z $column ]]; then
+    usage >&2
+    exit 1
+fi
+
+
+for pid in $(pgrep nvim); do
+    cmd=":${line}${column}|"
+    cmd=":call SwitchToBuffer('$file', $line, $column)"
+    out=$(echo "$cmd" | sudo ~joe/bin/echo-tty /proc/$pid/fd/0 2>&1)
+done
