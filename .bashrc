@@ -21,6 +21,9 @@ alias recipes="~/coding/text-recipes/venv/bin/recipes"
 alias vim="nvim"
 alias screenrecord="ffmpeg -f pulse -ac 2 -i default -f x11grab -framerate 30 -video_size 1920x1080 -i :0.0+1920,0"
 
+# Tab-completions for kitty terminal
+source <(kitty + complete setup bash)
+
 av() {
     source "$1/venv/bin/activate"
 }
