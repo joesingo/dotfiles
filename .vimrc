@@ -15,12 +15,16 @@ set t_Co=256                         " Enable 256 colors
 set termguicolors                    " Enable GUI colors for the terminal to get truecolor
 " colorscheme base16-classic-light
 
-let cs = "deus"
-let b16_theme_file = $HOME . "/.local/share/b16_theme/current_theme"
-if filereadable(b16_theme_file)
-    let cs = readfile(b16_theme_file)[0]
-endif
-execute "colorscheme" cs
+function SetColourScheme()
+    let cs = "deus"
+    let b16_theme_file = $HOME . "/.local/share/b16_theme/current_theme"
+    if filereadable(b16_theme_file)
+        let cs = readfile(b16_theme_file)[0]
+    endif
+    execute "colorscheme" cs
+endfunction
+
+call SetColourScheme()
 
 " Show line numbers
 set number
@@ -50,6 +54,9 @@ set showcmd
 
 " Allow backspacing over anything in insert mode
 set backspace=indent,eol,start
+
+" Reload colour scheme
+noremap <Leader>s :call SetColourScheme()<CR>
 
 " Clear search results with Esc
 noremap <silent><esc> :noh<CR>
@@ -186,6 +193,8 @@ let g:markdown_enable_mappings = 1
 function WriteText()
     set textwidth=79
     set colorcolumn=80
+    set nocuc
+    set nocul
 endfunction
 
 " Begin a LaTeX environment
@@ -201,10 +210,12 @@ noremap <Leader>e :call BeginLatexEnvironment()<CR>
 function! CompileLatexDocument(prog)
     let extension = expand("%:e")
     let thisdoc = expand("%")
+    let basename = expand("%:r")
     write
     if extension == "tex"
-        " If 'main.tex' exists, compile that instead of the current file
-        if filereadable("main.tex")
+        " If 'main.tex' exists and this file does not have an associated PDF,
+        " compile that instead of the current file
+        if filereadable("main.tex") && !filereadable(basename . ".pdf")
             let thisdoc = "main.tex"
         endif
 
@@ -227,6 +238,9 @@ noremap <Leader>b :execute "!biber" expand("%:r")<CR>
 " Word count of a TeX document
 noremap <Leader>w :write !detex \| wc -w<CR>
 
+" Jump to location in okular
+noremap <Leader>j :call JumpOkular()<CR>
+
 " Format a paragraph
 noremap <Leader>f gwap
 
@@ -234,6 +248,19 @@ noremap <Leader>f gwap
 " you scroll over them...
 let g:notes_conceal_italic=0
 let g:notes_conceal_bold=0
+
+function! JumpOkular()
+    let thisfile = expand("%")
+    let pdfname = expand("%:r")
+    let line = line(".")
+
+    " If 'main.tex' exists, jump to 'main.pdf' instead
+    if filereadable("main.tex")
+        let pdfname = "main"
+    endif
+
+    execute "! okular --unique '" . pdfname . ".pdf\\#src:" . line . " " . thisfile . "'"
+endfunction
 
 " Function to create a new tab, lcd to somewhere, and rename the tab (using
 " taboo.vim)
@@ -276,3 +303,5 @@ endfunction
 " Abbreviations
 abbreviate definit def __init__(self,<Space>)
 abbreviate ifnmain if __name__ == "__main__":<CR>  <Space>
+abbreviate aximo axiom
+abbreviate aximos axioms

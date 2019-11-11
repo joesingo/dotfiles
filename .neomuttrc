@@ -65,6 +65,9 @@ set new_mail_command = "notify-send 'New mail in %f' '%n new messages (%u unread
 macro index,pager ! "<change-folder> =gmail/primary<Enter>"
 macro index,pager \" "<change-folder> =cardiff/inbox<Enter>"
 
+# Misc
+set forward_format = "Fwd: %s"
+
 ###############
 # Pager settings
 #

@@ -49,7 +49,6 @@ c.aliases = {
     "w": "session-save",
     "q": "quit",
     "wq": "quit --save",
-    "vs": "view-source",
     "tf": "tab-focus",
     "od": "download-open",
     "cd": "download-clear"

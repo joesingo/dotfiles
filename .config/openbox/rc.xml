@@ -346,6 +346,11 @@
         <command>sync-email</command>
       </action>
     </keybind>
+    <keybind key="W-z">
+      <action name="Execute">
+        <command>zotero</command>
+      </action>
+    </keybind>
     <keybind key="W-t">
       <action name="Execute">
         <command>kitty</command>
