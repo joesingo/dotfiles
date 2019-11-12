@@ -1,0 +1,14 @@
+[Core General]
+ExternalEditor=Custom
+ExternalEditorCommand=/home/joe/bin/nvim-jump-to-line %f %l %c
+ObeyDRM=false
+
+[General]
+ShellOpenFileInTabs=true
+
+[Main View]
+ShowBottomBar=false
+ShowLeftPanel=false
+
+[Reviews]
+AnnotationTools=<tool type="note-linked" id="1"><engine color="#ffff00" type="PickPoint" hoverIcon="tool-note"><annotation icon="Note" color="#ffff00" type="Text"/></engine><shortcut>1</shortcut></tool>,<tool type="note-inline" id="2"><engine block="true" color="#edd400" type="PickPoint" hoverIcon="tool-note-inline"><annotation color="#edd400" type="FreeText" width="1" font="Noto Sans\\,9\\,-1\\,5\\,50\\,0\\,0\\,0\\,0\\,0\\,Regular"/></engine><shortcut>2</shortcut></tool>,<tool type="ink" id="3"><engine color="#000000" type="SmoothLine"><annotation color="#000000" type="Ink" width="2"/></engine><shortcut>3</shortcut></tool>,<tool type="highlight" id="4"><engine color="#edd400" type="TextSelector"><annotation color="#edd400" type="Highlight"/></engine><shortcut>4</shortcut></tool>,<tool type="straight-line" id="5"><engine points="2" color="#ffe000" type="PolyLine"><annotation color="#ffe000" type="Line" width="1"/></engine><shortcut>5</shortcut></tool>,<tool type="polygon" id="6"><engine points="-1" color="#007eee" type="PolyLine"><annotation color="#007eee" type="Line" width="1"/></engine><shortcut>6</shortcut></tool>,<tool type="stamp" id="7"><engine block="true" size="64" type="PickPoint" hoverIcon="okular"><annotation icon="okular" type="Stamp"/></engine><shortcut>7</shortcut></tool>,<tool type="underline" id="8"><engine color="#000000" type="TextSelector"><annotation color="#000000" type="Underline"/></engine><shortcut>8</shortcut></tool>,<tool type="ellipse" id="9"><engine block="true" color="#00ffff" type="PickPoint"><annotation color="#00ffff" type="GeomCircle" width="5"/></engine><shortcut>9</shortcut></tool>
