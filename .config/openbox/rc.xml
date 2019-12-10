@@ -328,7 +328,7 @@
     </keybind>
     <keybind key="W-x">
       <action name="Execute">
-        <command>xfce4-session-logout --suspend</command>
+        <command>dm-tool lock</command>
       </action>
     </keybind>
     <keybind key="W-S-x">
@@ -349,6 +349,11 @@
     <keybind key="W-z">
       <action name="Execute">
         <command>zotero</command>
+      </action>
+    </keybind>
+    <keybind key="W-9">
+      <action name="Execute">
+        <command>xfce4-settings-manager</command>
       </action>
     </keybind>
     <keybind key="W-t">
@@ -378,7 +383,7 @@
     </keybind>
     <keybind key="W-S-w">
       <action name="Execute">
-        <command>google-chrome</command>
+        <command>firefox</command>
       </action>
     </keybind>
     <keybind key="W-m">

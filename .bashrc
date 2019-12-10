@@ -1,4 +1,4 @@
-export PS1="\[$(tput bold)\]\[\033[01;32m\]\u@\h\[$(tput sgr0)\]:\[\033[01;34m\]\w\[$(tput sgr0)\]$ "
+export PS1="\[\e[1;91m\]\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w\[\e[0m\]$ "
 export LESS="-iR"
 export PATH="~/bin:/usr/local/go/bin:/home/joe/.nimble/bin:${PATH}"
 export EDITOR="/usr/bin/nvim"

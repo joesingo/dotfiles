@@ -154,6 +154,10 @@ vmap Q qcgn
 noremap :W :w
 noremap :Q :q
 noremap :BD :bd
+" for :call
+noremap :C :c
+" for :set
+noremap :S :s
 
 " LaTeX editing mappings
 " Italics and bold with Ctrl-I and Ctrl-B in visual and insert mode
@@ -285,6 +289,8 @@ function! Underline()
 endfunction
 
 noremap <Leader>u :call Underline()<CR>
+
+noremap <Leader>m :w<CR>:!make html<CR>
 
 function! LogEntry()
     read !date '+\%d-\%m-\%Y'

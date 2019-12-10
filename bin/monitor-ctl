@@ -1,15 +1,22 @@
-#!/usr/bin/fish
+#!/bin/bash
 
-set argc (count $argv)
-if math "$argc < 1" > /dev/null
+usage() {
     echo "Usage: monitor-ctl (enable | disable)"
-    exit 1
-end
+}
 
-switch $argv
-    case "enable"
+if [[ -z $1 ]]; then
+    usage
+    exit 0
+fi
+
+case "$1" in
+    "enable")
         xrandr --output HDMI-1 --right-of eDP-1 --auto --primary
-
-    case "disable"
+        ;;
+    "disable")
         xrandr --output HDMI-1 --off
-end
+        ;;
+    *)
+        usage >&2
+        exit 1
+esac
