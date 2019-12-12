@@ -2,19 +2,19 @@ set realname = "Joe Singleton"
 set folder = ~/mail/
 set mbox_type = Maildir
 
-# Gmail by default
-source ~/.neomutt/config/gmail
+# Cardiff by default
+source ~/.neomutt/config/cardiff
 
 # Folder hooks
-folder-hook gmail/* source ~/.neomutt/config/gmail
 folder-hook cardiff/* source ~/.neomutt/config/cardiff
+folder-hook gmail/* source ~/.neomutt/config/gmail
 
+# Cardiff
+mailboxes +cardiff +cardiff/inbox +cardiff/sent +cardiff/drafts
 # Gmail
 mailboxes +gmail +gmail/primary
 mailboxes +gmail/inbox +gmail/social +gmail/promotions
 mailboxes +gmail/sent +gmail/drafts
-# Cardiff
-mailboxes +cardiff +cardiff/inbox +cardiff/sent +cardiff/drafts
 
 # Sidebar stuff
 set sidebar_visible
@@ -39,7 +39,7 @@ set index_format = "%4C | %Z | %{%b %d} | %-15.15L | %s"
 bind index o display-message
 bind index s sort-mailbox
 bind index S sort-reverse
-set sort = reverse-threads
+set sort = reverse-date
 
 # Vim-like navigation
 bind index,pager k previous-entry
