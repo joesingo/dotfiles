@@ -52,6 +52,16 @@ coffee() {
     message "Coffee is ready!" $1
 }
 
+# Usage: pcrop PDF
+pcrop() {
+    file="$1"
+    tmpdir=$(mktemp -d)
+    tmpdest="${tmpdir}/$(basename $file)"
+    mv "$file" "$tmpdest"
+    echo "made backup at $tmpdest"
+    pdfcrop --margins 30 "$tmpdest" "$file"
+}
+
 # Usage: <cmd> themepack output_dir
 unpack_windows_wallpaper_theme() {
     themepack=$(realpath "$1")
