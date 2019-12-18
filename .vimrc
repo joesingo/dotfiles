@@ -47,6 +47,7 @@ set wildignore+=*.blg,*.bbl,*.out,*.log,*.aux,*.pdf,*.toc,*.bcf,*.run.xml,*.lof
 set wildignore+=*/venv/*
 set wildignore+=*/conda/*
 set wildignore+=*.hi,*.o
+set wildignore+=*/_build/*
 let g:ctrlp_custom_ignore = ''
 
 " Show normal mode commands as they are typed

@@ -323,7 +323,7 @@
     <!-- Keybindings for running applications -->
     <keybind key="W-p">
       <action name="Execute">
-        <command>toggle-panel.sh</command>
+        <command>kitty pl open</command>
       </action>
     </keybind>
     <keybind key="W-x">
@@ -506,18 +506,13 @@
       </action>
       <action name="ForEach">
         <query>
-          <shaded>yes</shaded>
+          <monitor>2</monitor>
         </query>
         <then>
           <action name="MoveResizeTo">
-            <monitor>2</monitor>
+            <monitor>1</monitor>
           </action>
         </then>
-        <else>
-          <action name="MoveResizeTo">
-            <monitor>2</monitor>
-          </action>
-        </else>
       </action>
     </keybind>
     <!-- Move ALL windows to laptop and disable monitor  -->
@@ -527,18 +522,13 @@
       </action>
       <action name="ForEach">
         <query>
-          <shaded>yes</shaded>
+          <monitor>1</monitor>
         </query>
         <then>
           <action name="MoveResizeTo">
-            <monitor>1</monitor>
+            <monitor>2</monitor>
           </action>
         </then>
-        <else>
-          <action name="MoveResizeTo">
-            <monitor>1</monitor>
-          </action>
-        </else>
       </action>
     </keybind>
     <keybind key="W-l">

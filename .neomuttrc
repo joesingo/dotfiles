@@ -62,8 +62,8 @@ bind index,pager R group-reply
 set new_mail_command = "notify-send 'New mail in %f' '%n new messages (%u unread)'"
 
 # Macros
-macro index,pager ! "<change-folder> =gmail/primary<Enter>"
-macro index,pager \" "<change-folder> =cardiff/inbox<Enter>"
+macro index,pager ! "<change-folder> =cardiff/inbox<Enter>"
+macro index,pager \" "<change-folder> =gmail/primary<Enter>"
 
 # Misc
 set forward_format = "Fwd: %s"
