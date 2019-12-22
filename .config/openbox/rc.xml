@@ -388,7 +388,7 @@
     </keybind>
     <keybind key="W-m">
       <action name="Execute">
-        <command>blockify</command>
+        <command>spotify</command>
       </action>
       <action name="Maximize"/>
     </keybind>
@@ -412,7 +412,22 @@
         <command>xkill</command>
       </action>
     </keybind>
-    <!-- Keybindings for controlling media players -->
+    <!-- Keybindings for controlling volume and media players -->
+    <keybind key="W-apostrophe">
+      <action name="Execute">
+        <command>amixer -D pulse sset Master toggle</command>
+      </action>
+    </keybind>
+    <keybind key="W-semicolon">
+      <action name="Execute">
+        <command>amixer -D pulse sset Master 5%-</command>
+      </action>
+    </keybind>
+    <keybind key="W-numbersign">
+      <action name="Execute">
+        <command>amixer -D pulse sset Master 5%+</command>
+      </action>
+    </keybind>
     <keybind key="W-period">
       <action name="Execute">
         <command>playerctl play-pause</command>
@@ -486,6 +501,12 @@
       </action>
       <action name="Focus"/>
       <action name="Raise"/>
+    </keybind>
+    <!-- Maximise window downwards -->
+    <keybind key="W-S-d">
+      <action name="GrowToEdge">
+        <direction>south</direction>
+      </action>
     </keybind>
     <!-- Move window to previous monitor -->
     <keybind key="C-W-h">
@@ -596,15 +617,6 @@
     <keybind key="W-S-m">
       <action name="Raise"/>
       <action name="Resize"/>
-    </keybind>
-    <keybind key="C-W-t">
-      <!--Open a terminal window in another desktop-->
-      <action name="GoToDesktop">
-        <to>4</to>
-      </action>
-      <action name="Execute">
-        <command>exo-open --launch TerminalEmulator</command>
-      </action>
     </keybind>
     <keybind key="W-c">
       <action name="ToggleShowDesktop"/>
