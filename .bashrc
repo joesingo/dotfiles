@@ -3,9 +3,6 @@ export LESS="-iR"
 export PATH="~/bin:/usr/local/go/bin:/home/joe/.nimble/bin:${PATH}"
 export EDITOR="/usr/bin/nvim"
 
-recipes_dir="$HOME/coding/recipes"
-export RECIPE_CONTENT="$HOME/coding/recipe_content"
-
 alias ll="ls -l"
 alias la="ls -a"
 alias grep="grep --color=auto -I"
@@ -17,7 +14,6 @@ alias diff="colordiff"
 alias httpd="python3 -m http.server"
 alias arduino-upload="sudo arduino --port /dev/ttyACM* --upload"
 alias notes_iwatch="cd ~/notes/content && iwatch -r -c '~/coding/mdss/venv/bin/mdss /tmp/w' ."
-alias recipes="~/coding/text-recipes/venv/bin/recipes"
 alias vim="nvim"
 alias screenrecord="ffmpeg -f pulse -ac 2 -i default -f x11grab -framerate 30 -video_size 1920x1080 -i :0.0+1920,0"
 
