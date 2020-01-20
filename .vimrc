@@ -200,6 +200,8 @@ function WriteText()
     set colorcolumn=80
     set nocuc
     set nocul
+    set formatoptions+=n
+    let &formatlistpat = "^\\s*[\\-\\*]\\s"
 endfunction
 
 " Begin a LaTeX environment
