@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import sys
+from typing import Dict
+
+def get_series_episode_numbers(filename):
+    """
+    Return (series, episode) numbers from a filename of the form "SxxEyy*",
+    where xx is series number and yy is episode number
+    """
+    try:
+        series = int(filename[1:3])
+        episode = int(filename[4:6])
+    except ValueError:
+        raise ValueError(f"unrecognised filename '{name}'")
+    return (series, episode)
+
+def main():
+    here = Path(".")
+    series = None
+    links: Dict[Path, Path] = {}
+    for episode in here.glob("S0*E*"):
+        try:
+            s, ep = get_series_episode_numbers(episode.name)
+        except ValueError as ex:
+            print(ex, file=sys.stderr)
+
+        if series is None:
+            series = s
+        if s != series:
+            print(
+                f"multiple series found ({series} and {s}) - aborting",
+                file=sys.stderr
+            )
+            return
+
+        links[here / str(ep)] = episode
+
+    for src, dest in links.items():
+        src.symlink_to(dest)
+
+if __name__ == "__main__":
+    main()

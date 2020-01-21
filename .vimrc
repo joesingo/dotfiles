@@ -201,7 +201,12 @@ function WriteText()
     set nocuc
     set nocul
     set formatoptions+=n
-    let &formatlistpat = "^\\s*[\\-\\*]\\s"
+
+    if &filetype == "tex" || &filetype == "plaintex"
+        let &formatlistpat = "^\\s*.item\\s"
+    else
+        let &formatlistpat = "^\\s*[\\-\\*]\\s"
+    endif
 endfunction
 
 " Begin a LaTeX environment

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+toggle_mute() {
+    amixer -D pulse sset Master toggle
+}
+
+ad=""
+interval=1
+
+while true; do
+    if playerctl metadata | grep spotify:ad; then
+        temp="adplaying"
+    else
+        temp=""
+    fi
+
+    if [[ $temp != $ad ]]; then
+        notify-send "Ad status changed: toggling mute"
+        toggle_mute
+        ad="$temp"
+    fi
+
+    sleep "$interval"
+done

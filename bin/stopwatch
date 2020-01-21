@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+import time
+
+SLEEP_INTERVAL = 0.1
+
+def format_time(seconds):
+    mins = int(seconds / 60)
+    rem = seconds - (60 * mins)
+    s = f"{rem:.3f}s"
+    if mins > 0:
+        s = f"{mins}m {s}"
+    return s
+
+def main():
+    elapsed = 0
+    while True:
+        print(f"\r{format_time(elapsed)} ", end="")
+        time.sleep(SLEEP_INTERVAL)
+        elapsed += SLEEP_INTERVAL
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("")

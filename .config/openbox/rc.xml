@@ -326,6 +326,11 @@
         <command>kitty pl open</command>
       </action>
     </keybind>
+    <keybind key="W-S-p">
+      <action name="Execute">
+        <command>kitty copystdout pl rst</command>
+      </action>
+    </keybind>
     <keybind key="W-x">
       <action name="Execute">
         <command>dm-tool lock</command>
