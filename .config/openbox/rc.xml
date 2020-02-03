@@ -507,10 +507,15 @@
       <action name="Focus"/>
       <action name="Raise"/>
     </keybind>
-    <!-- Maximise window downwards -->
-    <keybind key="W-S-d">
+    <!-- Maximise window left/righ -->
+    <keybind key="W-S-h">
       <action name="GrowToEdge">
-        <direction>south</direction>
+        <direction>west</direction>
+      </action>
+    </keybind>
+    <keybind key="W-S-l">
+      <action name="GrowToEdge">
+        <direction>east</direction>
       </action>
     </keybind>
     <!-- Move window to previous monitor -->
@@ -597,24 +602,6 @@
       <action name="MoveResizeTo">
         <y>50%</y>
         <height>50%</height>
-      </action>
-      <action name="Focus"/>
-      <action name="Raise"/>
-    </keybind>
-    <keybind key="W-S-h">
-      <action name="Unmaximize"/>
-      <action name="MoveResizeTo">
-        <x>0</x>
-        <width>50%</width>
-      </action>
-      <action name="Focus"/>
-      <action name="Raise"/>
-    </keybind>
-    <keybind key="W-S-l">
-      <action name="Unmaximize"/>
-      <action name="MoveResizeTo">
-        <x>50%</x>
-        <width>50%</width>
       </action>
       <action name="Focus"/>
       <action name="Raise"/>

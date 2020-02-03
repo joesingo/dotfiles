@@ -53,7 +53,7 @@ coffee() {
 pcrop() {
     file="$1"
     tmpdir=$(mktemp -d)
-    tmpdest="${tmpdir}/$(basename $file)"
+    tmpdest="${tmpdir}/$(basename "$file")"
     mv "$file" "$tmpdest"
     echo "made backup at $tmpdest"
     pdfcrop --margins 30 "$tmpdest" "$file"

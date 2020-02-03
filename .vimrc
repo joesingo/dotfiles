@@ -56,9 +56,6 @@ set showcmd
 " Allow backspacing over anything in insert mode
 set backspace=indent,eol,start
 
-" Reload colour scheme
-noremap <Leader>s :call SetColourScheme()<CR>
-
 " Clear search results with Esc
 noremap <silent><esc> :noh<CR>
 noremap <esc>[ <esc>[
@@ -167,8 +164,6 @@ vmap <C-i> :call SurroundLaTeXCmd("emph")<CR>
 vmap <C-b> :call SurroundLaTeXCmd("textbf")<CR>
 vmap ` :call SurroundLaTeXCmd("texttt")<CR>
 inoremap <C-b> \textbf{
-" Add footnote
-noremap <Leader>n i\footnotemark{}<Esc>}O<CR>\footnotetext{<CR>}<Esc>O<Tab>
 
 function! SurroundLaTeXCmd(...)
     if a:0 == 1
@@ -216,7 +211,6 @@ function! BeginLatexEnvironment()
     exe 'normal O\begin{' . env_name . '}'
     normal ] j
 endfunction
-noremap <Leader>e :call BeginLatexEnvironment()<CR>
 
 " Compile a LaTeX document
 function! CompileLatexDocument(prog)
@@ -241,20 +235,6 @@ function! CompileLatexDocument(prog)
         echo "I don't think you want to do that..."
     endif
 endfunction
-noremap <Leader>c :call CompileLatexDocument("pdflatex")<CR>
-noremap <Leader>v :call CompileLatexDocument("xelatex")<CR>
-
-" Run bibtex for a document
-noremap <Leader>b :execute "!biber" expand("%:r")<CR>
-
-" Word count of a TeX document
-noremap <Leader>w :write !detex \| wc -w<CR>
-
-" Jump to location in okular
-noremap <Leader>j :call JumpOkular()<CR>
-
-" Format a paragraph
-noremap <Leader>f gwap
 
 " Conceals in vim-notes cause lines to wobble when
 " you scroll over them...
@@ -296,13 +276,19 @@ function! Underline()
     normal o
 endfunction
 
-noremap <Leader>u :call Underline()<CR>
-
-noremap <Leader>m :w<CR>:!make html<CR>
-
 function! LogEntry()
     read !date '+\%d-\%m-\%Y'
     norm yypv$r-
+endfunction
+
+function! StartEndLog()
+    let line = getline(".")
+    let time = substitute(system("date '+\%H:\%M'"), "\\n", "", "")
+    if line =~ "^\* \\d\\d:\\d\\d - \?:.*"
+        exe "normal 0f?s" . time
+    else
+        exe "normal o* " . time . " - ?:"
+    endif
 endfunction
 
 function! SwitchToBuffer(name, line, column)
@@ -319,3 +305,18 @@ abbreviate definit def __init__(self,<Space>)
 abbreviate ifnmain if __name__ == "__main__":<CR>  <Space>
 abbreviate aximo axiom
 abbreviate aximos axioms
+
+" Leader mappings
+
+noremap <Leader>b :execute "!biber" expand("%:r")<CR>
+noremap <Leader>c :call CompileLatexDocument("pdflatex")<CR>
+noremap <Leader>e :call BeginLatexEnvironment()<CR>
+noremap <Leader>f gwap
+noremap <Leader>j :call JumpOkular()<CR>
+noremap <Leader>l :call StartEndLog()<CR>
+noremap <Leader>m :w<CR>:!make html<CR>
+noremap <Leader>n i\footnotemark{}<Esc>}O<CR>\footnotetext{<CR>}<Esc>O<Tab>
+noremap <Leader>s :call SetColourScheme()<CR>
+noremap <Leader>u :call Underline()<CR>
+noremap <Leader>v :call CompileLatexDocument("xelatex")<CR>
+noremap <Leader>w :write !detex \| wc -w<CR>
