@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+from datetime import datetime
+import sys
+
+TIME_FORMAT = "%H:%M"
+USAGE = "tb START END\nprint the duration between from times in HH:MM format"
+
+def main():
+    args = sys.argv[1:]
+    if "h" in args or "--help" in args:
+        print(USAGE)
+        sys.exit(0)
+
+    try:
+        start, end = map(lambda s: datetime.strptime(s, TIME_FORMAT), args)
+    except ValueError:
+        print(USAGE, file=sys.stderr)
+        sys.exit(1)
+
+    duration = end - start
+    secs = duration.total_seconds()
+    hours = int(secs / 3600)
+    mins = int((secs - (3600 * hours)) / 60)
+    print(f"{hours}h {mins}m")
+
+if __name__ == "__main__":
+    main()
