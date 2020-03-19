@@ -18,15 +18,13 @@ commands qute://help/commands.html#bookmark-del
 news https://www.bbc.co.uk/news
 sims https://sims.cf.ac.uk
 pats https://pats.cs.cf.ac.uk/
-truth https://github.com/joesingo/truthdiscovery/projects/1
-truthrepo https://github.com/joesingo/truthdiscovery
 re https://recipes.joesingo.co.uk/
 zoe https://www.facebook.com/associationprincessezoe/?epa=SEARCH_BOX
 todo https://todoist.com/app#project%2F2212045514
 js https://joesingo.co.uk/
-ed https://github.com/joesingo/tom_education
 hn https://news.ycombinator.com/
-paper https://www.dropbox.com/home/Truth%20discovery%20shared/AAMAS%202020%20Joe/aamas
 nssl http://fdnwtlcmrszhvkbx.neverssl.com/online
 notes file:///home/joe/p/notes/site/_build/html/index.html
 tw https://twitter.com/home
+papers file:///home/joe/p/notes/site/_build/html/papers.html
+project https://github.com/joesingo/phd/projects/1
