@@ -15,7 +15,7 @@ alias httpd="python3 -m http.server"
 alias arduino-upload="sudo arduino --port /dev/ttyACM* --upload"
 alias notes_iwatch="cd ~/notes/content && iwatch -r -c '~/coding/mdss/venv/bin/mdss /tmp/w' ."
 alias vim="nvim"
-alias screenrecord="ffmpeg -f pulse -ac 2 -i default -f x11grab -framerate 30 -video_size 1920x1080 -i :0.0+1920,0"
+alias screenrecord="ffmpeg -f pulse -ac 2 -i default -f x11grab -framerate 30 -video_size 1920x1080 -i :0.0+0,0"
 alias nfcserver="~/coding/nfc_handler/venv/bin/python ~/coding/nfc_handler/server.py"
 
 # Tab-completions for kitty terminal

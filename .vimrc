@@ -277,6 +277,7 @@ function! Underline()
 endfunction
 
 function! LogEntry()
+    exe "norm ] j"
     read !date '+\%d-\%m-\%Y'
     norm yypv$r-
 endfunction
@@ -300,6 +301,16 @@ function! SwitchToBuffer(name, line, column)
     endif
 endfunction
 
+function! Make()
+    let f = expand("%:p")
+    write
+    if f =~ "/home/joe/p/notes/site/.*"
+        !make html
+    else
+        !make
+    endif
+endfunction
+
 " Abbreviations
 abbreviate definit def __init__(self,<Space>)
 abbreviate ifnmain if __name__ == "__main__":<CR>  <Space>
@@ -314,7 +325,7 @@ noremap <Leader>e :call BeginLatexEnvironment()<CR>
 noremap <Leader>f gwap
 noremap <Leader>j :call JumpOkular()<CR>
 noremap <Leader>l :call StartEndLog()<CR>
-noremap <Leader>m :w<CR>:!make html<CR>
+noremap <Leader>m :call Make()<CR>
 noremap <Leader>n i\footnotemark{}<Esc>}O<CR>\footnotetext{<CR>}<Esc>O<Tab>
 noremap <Leader>s :call SetColourScheme()<CR>
 noremap <Leader>u :call Underline()<CR>
