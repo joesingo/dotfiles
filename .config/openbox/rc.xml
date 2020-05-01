@@ -371,6 +371,11 @@
         <command>okular</command>
       </action>
     </keybind>
+    <keybind key="W-S-o">
+      <action name="Execute">
+        <command>kitty open-pdf</command>
+      </action>
+    </keybind>
     <keybind key="C-A-Tab">
       <action name="Execute">
         <command>kitty -T window_switcher_popup window_switcher</command>

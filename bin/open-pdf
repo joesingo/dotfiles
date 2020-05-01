@@ -1,0 +1,2 @@
+#!/bin/bash
+okular "$(find ~ -type f -name "*.pdf" | fzf)"

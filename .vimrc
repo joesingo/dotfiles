@@ -127,7 +127,7 @@ function! CreateVariable()
         exe 'normal O' . var_name . '="'
         normal "jpA"
     elseif &filetype == "javascript"
-        exe 'normal Ovar ' . var_name . ' = '
+        exe 'normal Olet ' . var_name . ' = '
         normal "jpA;
     elseif &filetype == "erlang"
         exe 'normal O' . var_name . ' = '
@@ -200,7 +200,7 @@ function WriteText()
     if &filetype == "tex" || &filetype == "plaintex"
         let &formatlistpat = "^\\s*.item\\s"
     else
-        let &formatlistpat = "^\\s*[\\-\\*]\\s"
+        let &formatlistpat = "^\\s*[\\-\\*#]\\.\\?\\s"
     endif
 endfunction
 
