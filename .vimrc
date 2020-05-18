@@ -306,6 +306,8 @@ function! Make()
     write
     if f =~ "/home/joe/p/notes/site/.*"
         !make html
+    elseif f =~ "/home/joe/p/uniwebsite/.*"
+        !make html
     else
         !make
     endif

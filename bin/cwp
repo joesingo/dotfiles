@@ -37,6 +37,7 @@ next_wallpaper() {
     temp=`mktemp`
     tail -n +2 "$queue_file" > "$temp"
     echo "$next" | cat "$temp" - > "$queue_file"
+    rm "$temp"
 }
 
 cwp_dir="$HOME/.local/share/cwp"

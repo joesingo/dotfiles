@@ -4,7 +4,7 @@ script=$(mktemp)
 dig="$1"
 
 cat > "$script" <<EOF
-i${dig}gg"+yG:q!
+i${dig}0"+y$:q!
 EOF
 
 nvim -s "$script"

@@ -17,6 +17,7 @@ alias notes_iwatch="cd ~/notes/content && iwatch -r -c '~/coding/mdss/venv/bin/m
 alias vim="nvim"
 alias screenrecord="ffmpeg -f pulse -ac 2 -i default -f x11grab -framerate 30 -video_size 1920x1080 -i :0.0+0,0"
 alias nfcserver="~/coding/nfc_handler/venv/bin/python ~/coding/nfc_handler/server.py"
+alias gpom="git push origin master"
 
 # Tab-completions for kitty terminal
 source <(kitty + complete setup bash)
