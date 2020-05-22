@@ -2,28 +2,20 @@
 from pathlib import Path
 import sys
 from typing import Dict
-
-def get_series_episode_numbers(filename):
-    """
-    Return (series, episode) numbers from a filename of the form "SxxEyy*",
-    where xx is series number and yy is episode number
-    """
-    try:
-        series = int(filename[1:3])
-        episode = int(filename[4:6])
-    except ValueError:
-        raise ValueError(f"unrecognised filename '{name}'")
-    return (series, episode)
+import re
 
 def main():
     here = Path(".")
     series = None
     links: Dict[Path, Path] = {}
-    for episode in here.glob("S0*E*"):
-        try:
-            s, ep = get_series_episode_numbers(episode.name)
-        except ValueError as ex:
-            print(ex, file=sys.stderr)
+    episode_regex = re.compile(r".*S(?P<series>\d+)E(?P<episode>\d+).*")
+    for episode in here.iterdir():
+        match = episode_regex.match(episode.name)
+        if not match:
+            continue
+
+        s = match.group("series")
+        ep = match.group("episode")
 
         if series is None:
             series = s
