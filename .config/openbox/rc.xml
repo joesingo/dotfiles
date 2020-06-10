@@ -167,13 +167,13 @@
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
     <!-- Keybindings for desktop switching -->
-    <keybind key="C-A-Left">
+    <keybind key="C-A-h">
       <action name="GoToDesktop">
         <to>left</to>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="C-A-Right">
+    <keybind key="C-A-l">
       <action name="GoToDesktop">
         <to>right</to>
         <wrap>no</wrap>
@@ -438,17 +438,17 @@
         <command>amixer -D pulse sset Master 5%+</command>
       </action>
     </keybind>
-    <keybind key="W-period">
+    <keybind key="W-period XF86AudioPlay">
       <action name="Execute">
         <command>playerctl play-pause</command>
       </action>
     </keybind>
-    <keybind key="W-slash">
+    <keybind key="W-slash XF86AudioNext">
       <action name="Execute">
         <command>playerctl next</command>
       </action>
     </keybind>
-    <keybind key="W-comma">
+    <keybind key="W-comma XF86AudioPrev">
       <action name="Execute">
         <command>playerctl previous</command>
       </action>
