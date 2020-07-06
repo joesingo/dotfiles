@@ -1,4 +1,3 @@
-filetype plugin on
 
 let sourceme = $HOME . "/.vim/bundle/vim-setup/sourceme.vim"
 execute "source" sourceme
@@ -193,7 +192,6 @@ let g:markdown_enable_mappings = 1
 function WriteText()
     set textwidth=79
     set colorcolumn=80
-    set nocuc
     set nocul
     set formatoptions+=n
 
@@ -273,7 +271,6 @@ function! Underline()
     let char = nr2char(getchar())
     normal o
     exe "normal " . length . "I" . char
-    normal o
 endfunction
 
 function! LogEntry()
@@ -333,3 +330,4 @@ noremap <Leader>s :call SetColourScheme()<CR>
 noremap <Leader>u :call Underline()<CR>
 noremap <Leader>v :call CompileLatexDocument("xelatex")<CR>
 noremap <Leader>w :write !detex \| wc -w<CR>
+noremap <Leader>x :s/./&̶/g<CR>:noh<CR>

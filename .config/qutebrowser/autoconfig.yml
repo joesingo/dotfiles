@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  content.geolocation:
-    https://www.mcdonalds.com: false
+  content.pdfjs:
+    global: false

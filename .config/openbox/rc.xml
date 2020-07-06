@@ -300,26 +300,26 @@
       </action>
     </keybind>
     <!-- Keybindings for window switching with the arrow keys -->
-    <keybind key="W-A-l">
-      <action name="DirectionalCycleWindows">
-        <direction>right</direction>
-      </action>
-    </keybind>
-    <keybind key="W-A-h">
-      <action name="DirectionalCycleWindows">
-        <direction>left</direction>
-      </action>
-    </keybind>
-    <keybind key="W-A-k">
-      <action name="DirectionalCycleWindows">
-        <direction>up</direction>
-      </action>
-    </keybind>
-    <keybind key="W-A-j">
-      <action name="DirectionalCycleWindows">
-        <direction>down</direction>
-      </action>
-    </keybind>
+    <!-- <keybind key="W-A-l"> -->
+    <!--   <action name="DirectionalCycleWindows"> -->
+    <!--     <direction>right</direction> -->
+    <!--   </action> -->
+    <!-- </keybind> -->
+    <!-- <keybind key="W-A-h"> -->
+    <!--   <action name="DirectionalCycleWindows"> -->
+    <!--     <direction>left</direction> -->
+    <!--   </action> -->
+    <!-- </keybind> -->
+    <!-- <keybind key="W-A-k"> -->
+    <!--   <action name="DirectionalCycleWindows"> -->
+    <!--     <direction>up</direction> -->
+    <!--   </action> -->
+    <!-- </keybind> -->
+    <!-- <keybind key="W-A-j"> -->
+    <!--   <action name="DirectionalCycleWindows"> -->
+    <!--     <direction>down</direction> -->
+    <!--   </action> -->
+    <!-- </keybind> -->
     <!-- Keybindings for running applications -->
     <keybind key="W-p">
       <action name="Execute">

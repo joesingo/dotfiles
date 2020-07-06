@@ -17,6 +17,7 @@ repos=("https://github.com/airblade/vim-gitgutter"
 "https://github.com/chriskempson/base16-vim"
 "https://github.com/Nequo/vim-allomancer"
 "https://github.com/tomasr/molokai"
+"https://github.com/justinmk/vim-sneak"
 "https://github.com/itchyny/calendar.vim")
 
 echo "" > "$source_script"

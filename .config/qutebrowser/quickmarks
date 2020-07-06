@@ -1,7 +1,6 @@
 gm https://mail.google.com/mail/u/0/#inbox
 m https://www.messenger.com/t/TheBeemovie3
 keep https://keep.google.com/
-yt https://www.youtube.com/?reload=9
 sant https://retail.santander.co.uk/LOGSUK_NS_ENS/BtoChannelDriver.ssobto?dse_operationName=LOGON&dse_processorState=initial&redirect=S
 maps https://www.google.com/maps
 iou https://iou.joesingo.co.uk/login/
@@ -28,3 +27,4 @@ notes file:///home/joe/p/notes/site/_build/html/index.html
 tw https://twitter.com/home
 papers file:///home/joe/p/notes/site/_build/html/papers.html
 project https://github.com/joesingo/phd/projects/1
+yt https://www.youtube.com/

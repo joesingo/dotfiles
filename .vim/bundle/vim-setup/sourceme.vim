@@ -13,4 +13,5 @@ set runtimepath+=/home/joe/.vim/bundle/vim-surround
 set runtimepath+=/home/joe/.vim/bundle/base16-vim
 set runtimepath+=/home/joe/.vim/bundle/vim-allomancer
 set runtimepath+=/home/joe/.vim/bundle/molokai
+set runtimepath+=/home/joe/.vim/bundle/vim-sneak
 set runtimepath+=/home/joe/.vim/bundle/calendar.vim
