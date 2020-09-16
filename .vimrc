@@ -283,7 +283,7 @@ function! StartEndLog()
     let line = getline(".")
     let time = substitute(system("date '+\%H:\%M'"), "\\n", "", "")
     if line =~ "^\* \\d\\d:\\d\\d - \?:.*"
-        exe "normal 0f?s" . time
+        exe "normal 0f?cl" . time
     else
         exe "normal o* " . time . " - ?:"
     endif
@@ -318,7 +318,7 @@ abbreviate aximos axioms
 
 " Leader mappings
 
-noremap <Leader>b :execute "!biber" expand("%:r")<CR>
+noremap <Leader>b :call CompileLatexDocument("bibtex")<CR>
 noremap <Leader>c :call CompileLatexDocument("pdflatex")<CR>
 noremap <Leader>e :call BeginLatexEnvironment()<CR>
 noremap <Leader>f gwap
