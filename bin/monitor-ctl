@@ -4,17 +4,29 @@ usage() {
     echo "Usage: monitor-ctl (enable | disable)"
 }
 
+# usage: set_wacom_screen SCREEN
+set_wacom_screen() {
+    for id in "Wacom One by Wacom M Pen stylus" "Wacom One by Wacom M Pen eraser"; do
+        xsetwacom set "$id" MapToOutput "$1"
+    done
+}
+
 if [[ -z $1 ]]; then
     usage
     exit 0
 fi
 
+hdmi="HDMI-1"
+laptop="eDP-1"
+
 case "$1" in
     "enable")
-        xrandr --output HDMI-1 --right-of eDP-1 --auto --primary
+        xrandr --output "$hdmi" --right-of "$laptop" --auto --primary
+        set_wacom_screen "$hdmi"
         ;;
     "disable")
-        xrandr --output HDMI-1 --off
+        xrandr --output "$hdmi" --off
+        set_wacom_screen "$laptop"
         ;;
     *)
         usage >&2
