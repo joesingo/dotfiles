@@ -1,9 +1,30 @@
 #!/bin/bash
-id="70:26:05:56:44:DF"
-if pacmd list-cards | grep bluez >/dev/null; then
-    echo "disconnecting..."
-    bluetoothctl <<< "disconnect $id" && sleep 5
+
+die() {
+    echo "$1" >&2
+    exit 1
+}
+
+# names of pulseaudio sinks
+speakers="alsa_output.pci-0000_00_1f.3.analog-stereo"
+interface="alsa_output.usb-Burr-Brown_from_TI_USB_Audio_CODEC-00.iec958-stereo"
+
+# get current sink to determine the target sink
+new_sink=""
+s=$(pacmd list-sinks | grep -A1 "\*" | grep name | cut -d"<" -f 2- | cut -d">" -f1)
+if [[ $s == $speakers ]]; then
+    new_sink="$interface"
+elif [[ $s == $interface ]]; then
+    new_sink="$speakers"
+else
+    die "could not determine current sink"
 fi
 
-echo "connecting..."
-bluetoothctl <<< "connect $id"
+# set new default sink
+pacmd set-default-sink "$new_sink"
+
+# move all existing streams to new sink
+pacmd list-sink-inputs \
+    | grep "index:"    \
+    | cut -d":" -f2-   \
+    | xargs -I{} pacmd move-sink-input {} "$new_sink"

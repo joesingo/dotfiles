@@ -4,18 +4,25 @@ toggle_mute() {
     amixer -D pulse sset Master toggle
 }
 
+playing="adplaying"
 ad=""
 interval=1
 
 while true; do
     if playerctl -p spotify metadata | grep spotify:ad; then
-        temp="adplaying"
+        temp="$playing"
     else
         temp=""
     fi
 
     if [[ $temp != $ad ]]; then
         notify-send "Ad status changed: toggling mute"
+        # the ad status seems to change just slightly before the ad actually
+        # stops, which means we would hear the last second or so of the ad
+        # before the music starts. avoid this by sleeping an extra second
+        if [[ $ad == $playing ]]; then
+            sleep 1
+        fi
         toggle_mute
         ad="$temp"
     fi

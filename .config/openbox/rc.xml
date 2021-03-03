@@ -43,7 +43,7 @@
       D: omnipresent (on all desktops).
   -->
     <keepBorder>yes</keepBorder>
-    <animateIconify>yes</animateIconify>
+    <animateIconify>no</animateIconify>
     <font place="ActiveWindow">
       <name>DejaVu Sans Mono</name>
       <size>12</size>
@@ -388,7 +388,10 @@
     </keybind>
     <keybind key="W-w">
       <action name="Execute">
-        <command>qutebrowser --debug --enable-webengine-inspector</command>
+        <!-- stupid XML does not allow <hyphen><hyphen> in comments, so be sure
+        to add them to the qutebrowser options below if uncommenting -->
+        <!-- <command>qutebrowser debug enable-webengine-inspector</command> -->
+        <command>/home/joe/coding/apps/surf/surf-open.sh</command>
       </action>
     </keybind>
     <keybind key="W-S-w">
@@ -1093,7 +1096,6 @@
            afterwards -->
       <maximized>yes</maximized>
     </application>
-
     <!-- Popup terminal to run window switcher script -->
     <application title="window_switcher_popup">
       <decor>no</decor>

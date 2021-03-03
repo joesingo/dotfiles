@@ -43,9 +43,10 @@ set wildignore+=*.pyc
 set wildignore+=*.beam
 set wildignore+=*.class
 set wildignore+=*.blg,*.bbl,*.out,*.log,*.aux,*.pdf,*.toc,*.bcf,*.run.xml,*.lof
+set wildignore+=*.snm,*.nav,*.synctex.gz
 set wildignore+=*/venv/*
 set wildignore+=*/conda/*
-set wildignore+=*.hi,*.o
+set wildignore+=*.hi,*.o,*.dyn_hi,*.dyn_o
 set wildignore+=*/_build/*
 let g:ctrlp_custom_ignore = ''
 
@@ -207,7 +208,6 @@ function! BeginLatexEnvironment()
     let env_name = input("environment: ")
     exe 'normal i\end{' . env_name . '}'
     exe 'normal O\begin{' . env_name . '}'
-    normal ] j
 endfunction
 
 " Compile a LaTeX document
@@ -282,10 +282,10 @@ endfunction
 function! StartEndLog()
     let line = getline(".")
     let time = substitute(system("date '+\%H:\%M'"), "\\n", "", "")
-    if line =~ "^\* \\d\\d:\\d\\d - \?:.*"
+    if line =~ "^\- \\d\\d:\\d\\d - \?:.*"
         exe "normal 0f?cl" . time
     else
-        exe "normal o* " . time . " - ?:"
+        exe "normal o- " . time . " - ?:"
     endif
 endfunction
 

@@ -1,14 +1,19 @@
 #!/bin/bash
 
 # script to use with surf(1) to download a file
-# usage: download-file URI REFERER USERAGENT COOKIEFILE
+# usage: download-file URI REFERER USERAGENT COOKIEFILE WINID
 uri="$1"
 ref="$2"
 ua="$3"
 cookies="$4"
+winid="$5"
 
 prompt="Download:"
-path=$(</dev/null dmenu -p "$prompt")
+path=$(</dev/null dmenu -p "$prompt" -w "$winid")
+# dmenu returns 1 if ESC pressed; cancel download in this case
+if [[ $? == 1 ]]; then
+    exit 0
+fi
 
 curlopts=( "-g" "-L" "-A" "'$ua'" "-b" "'$cookies'" "-c" "'$cookies'" "-e" "'$ref'" )
 

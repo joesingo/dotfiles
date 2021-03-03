@@ -1,4 +1,4 @@
-State=AAAA/wAAAAD9AAAAAAAAB4AAAAPdAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAQDAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
 Window-Maximized 1080x1920=true
 
 [Desktop Entry]
@@ -11,29 +11,30 @@ State=AAAA/wAAAAD9AAAAAAAAB4AAAAQZAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG
 ToolBarsMovable=Disabled
 Width 1920=958
 Window-Maximized 1050x1680=true
+Window-Maximized 1080x1920=true
 Window-Maximized 1920x1080=true
 
 [Recent Files]
-File1[$e]=$HOME/p/papers/pdf/programming_with_arrows.pdf
-File10[$e]=$HOME/p/papers/pdf/judgment_aggregation.pdf
-File2[$e]=$HOME/p/papers/pdf/online_handbook_of_argumentation_for_ai_volume_1.pdf
-File3[$e]=$HOME/p/papers/pdf/weighted_voting_via_no-regret_learning.pdf
-File4[$e]=$HOME/p/papers/pdf/properties_of_multiwinner_voting_rules.pdf
-File5[$e]=$HOME/p/papers/pdf/improvement_operators.pdf
-File6[$e]=$HOME/p/papers/pdf/automated_justification_of_collective_decisions_via_constraint_solving.pdf
-File7[$e]=$HOME/p/papers/pdf/paired_comparisons_analysis_an_axiomatic_approach_to_ranking_methods.pdf
-File8[$e]=$HOME/p/papers/pdf/ranking_participants_in_tournaments_by_means_of_rating_functions.pdf
-File9[$e]=$HOME/p/papers/pdf/ranking_participants_in_generalized_tournaments.pdf
-Name1[$e]=programming_with_arrows.pdf
-Name10[$e]=judgment_aggregation.pdf
-Name2[$e]=online_handbook_of_argumentation_for_ai_volume_1.pdf
-Name3[$e]=weighted_voting_via_no-regret_learning.pdf
-Name4[$e]=properties_of_multiwinner_voting_rules.pdf
-Name5[$e]=improvement_operators.pdf
-Name6[$e]=automated_justification_of_collective_decisions_via_constraint_solving.pdf
-Name7[$e]=paired_comparisons_analysis_an_axiomatic_approach_to_ranking_methods.pdf
-Name8[$e]=ranking_participants_in_tournaments_by_means_of_rating_functions.pdf
-Name9[$e]=ranking_participants_in_generalized_tournaments.pdf
+File1[$e]=$HOME/p/teaching/group-project/group11/individual-reports/jack.pdf
+File10[$e]=/usr/share/texlive/texmf-dist/doc/latex/latex-doc-ptr/latex-doc-ptr.pdf
+File2[$e]=$HOME/p/teaching/group-project/group11/individual-reports/jiaxuan.pdf
+File3[$e]=$HOME/p/teaching/group-project/group11/individual-reports/joe.pdf
+File4[$e]=$HOME/p/teaching/group-project/group11/individual-reports/randell.pdf
+File5[$e]=$HOME/p/teaching/group-project/group2/individual-reports/salman.pdf
+File6[$e]=$HOME/p/teaching/group-project/group11/individual-reports/fred.pdf
+File7[$e]=$HOME/p/teaching/group-project/group11/individual-reports/james.pdf
+File8[$e]=$HOME/a/journal-version/journalversion.pdf
+File9[$e]=/usr/share/texlive/texmf-dist/doc/latex/natbib/natbib.pdf
+Name1[$e]=jack.pdf
+Name10[$e]=latex-doc-ptr.pdf
+Name2[$e]=jiaxuan.pdf
+Name3[$e]=joe.pdf
+Name4[$e]=randell.pdf
+Name5[$e]=salman.pdf
+Name6[$e]=fred.pdf
+Name7[$e]=james.pdf
+Name8[$e]=journalversion.pdf
+Name9[$e]=natbib.pdf
 
 [Shortcut Schemes]
 Current Scheme=Default
