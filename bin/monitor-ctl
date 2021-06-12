@@ -8,6 +8,10 @@ usage() {
 set_wacom_screen() {
     for id in "Wacom One by Wacom M Pen stylus" "Wacom One by Wacom M Pen eraser"; do
         xsetwacom set "$id" MapToOutput "$1"
+        # also set rotation, since i use the wacom upside-down. this is not
+        # really anything to do with monitor-ctl, but avoids needing to run a
+        # separate script every time i plug it in
+        xsetwacom set "$id" Rotate half
     done
 }
 
@@ -21,7 +25,7 @@ laptop="eDP-1"
 
 case "$1" in
     "enable")
-        xrandr --output "$hdmi" --right-of "$laptop" --auto --primary
+        xrandr --output "$hdmi" --left-of "$laptop" --auto --primary
         set_wacom_screen "$hdmi"
         ;;
     "disable")
