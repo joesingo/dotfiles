@@ -20,16 +20,16 @@ if [[ -z $1 ]]; then
     exit 0
 fi
 
-hdmi="HDMI-1"
+monitor="DP-1"
 laptop="eDP-1"
 
 case "$1" in
     "enable")
-        xrandr --output "$hdmi" --left-of "$laptop" --auto --primary
-        set_wacom_screen "$hdmi"
+        xrandr --output "$monitor" --left-of "$laptop" --auto --primary
+        set_wacom_screen "$monitor"
         ;;
     "disable")
-        xrandr --output "$hdmi" --off
+        xrandr --output "$monitor" --off
         set_wacom_screen "$laptop"
         ;;
     *)
