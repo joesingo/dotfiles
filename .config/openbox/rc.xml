@@ -396,7 +396,7 @@
     </keybind>
     <keybind key="W-S-w">
       <action name="Execute">
-        <command>firefox</command>
+        <command>google-chrome --remote-debugging-port=1234</command>
       </action>
     </keybind>
     <keybind key="W-m">
