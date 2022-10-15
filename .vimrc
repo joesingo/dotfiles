@@ -42,10 +42,13 @@ set wildignore+=*.png,*.jpg,*.gif
 set wildignore+=*.pyc
 set wildignore+=*.beam
 set wildignore+=*.class
+set wildignore+=*.olean
 set wildignore+=*.blg,*.bbl,*.out,*.log,*.aux,*.pdf,*.toc,*.bcf,*.run.xml,*.lof
 set wildignore+=*.snm,*.nav,*.synctex.gz
 set wildignore+=*/venv/*
 set wildignore+=*/conda/*
+set wildignore+=*/node_modules/*
+set wildignore+=*/lean/_target/*
 set wildignore+=*.hi,*.o,*.dyn_hi,*.dyn_o
 set wildignore+=*/_build/*
 let g:ctrlp_custom_ignore = ''
@@ -215,8 +218,13 @@ function! CompileLatexDocument(prog)
     let extension = expand("%:e")
     let thisdoc = expand("%")
     let basename = expand("%:r")
+    let fullpath = expand("%:p")
     write
-    if extension == "tex"
+    if fullpath =~ "/home/joe/p/mypapers/thesis/.*"
+        " temporary exception for thesis: get me in the habit of calling make
+        " instead of pdflatex directly...
+        echo "You fool: use Make"
+    elseif extension == "tex"
         " If 'main.tex' exists and this file does not have an associated PDF,
         " compile that instead of the current file
         if filereadable("main.tex") && !filereadable(basename . ".pdf")
@@ -318,8 +326,9 @@ abbreviate aximos axioms
 
 " Leader mappings
 
-noremap <Leader>b :call CompileLatexDocument("bibtex")<CR>
+" noremap <Leader>b :call CompileLatexDocument("bibtex")<CR>
 noremap <Leader>c :call CompileLatexDocument("pdflatex")<CR>
+noremap <Leader>b :w<CR>:!make bib<CR>
 noremap <Leader>e :call BeginLatexEnvironment()<CR>
 noremap <Leader>f gwap
 noremap <Leader>j :call JumpOkular()<CR>
