@@ -1,7 +1,7 @@
 export PS1="\[\e[1;91m\]\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w\[\e[0m\]$ "
 export LESS="-iR"
-export PATH="~/bin:/usr/local/go/bin:/home/joe/.nimble/bin:${PATH}"
-export EDITOR="/usr/bin/nvim"
+export PATH="~/bin:~/.elan/bin:/usr/local/go/bin:/home/joe/.nimble/bin:/usr/local/texlive/2022/bin/x86_64-linux:${PATH}"
+export EDITOR="~/coding/apps/nvim/nvim.appimage"
 
 alias ll="ls -l"
 alias la="ls -a"
@@ -14,7 +14,7 @@ alias diff="colordiff"
 alias httpd="python3 -m http.server"
 alias arduino-upload="sudo arduino --port /dev/ttyACM* --upload"
 alias notes_iwatch="cd ~/notes/content && iwatch -r -c '~/coding/mdss/venv/bin/mdss /tmp/w' ."
-alias vim="nvim"
+alias vim="$EDITOR"
 alias screenrecord="ffmpeg -f pulse -ac 2 -i default -f x11grab -framerate 30 -video_size 1920x1080 -i :0.0+0,0"
 alias nfcserver="~/coding/nfc_handler/venv/bin/python ~/coding/nfc_handler/server.py"
 alias gpom="git push origin master"
@@ -154,5 +154,15 @@ kitty_colorscheme() {
     state_dir="$HOME/.local/share/b16_theme"
     mkdir -p "$state_dir"
     # Remove './' prefix and '.conf' suffix
-    echo "$name" | sed 's,^\./,,; s,\.conf$,,' > "$state_dir/current_theme"
+    theme_name=$(echo "$name" | sed 's,^\./,,; s,\.conf$,,')
+    echo "$theme_name" > "$state_dir/current_theme"
+
+    # Edit helix config
+    helix_config=~/.config/helix/config.toml
+    if [[ -f $helix_config ]]; then
+        sed -i 's/^theme = ".*$/theme = "'"$theme_name"'"/' 
+    fi
+
 }
+[ -f "/home/joe/.ghcup/env" ] && source "/home/joe/.ghcup/env" # ghcup-env
+. "$HOME/.cargo/env"
