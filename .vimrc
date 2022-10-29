@@ -1,19 +1,3 @@
-
-let sourceme = $HOME . "/.vim/bundle/vim-setup/sourceme.vim"
-execute "source" sourceme
-
-set hidden
-
-syntax enable
-set background=dark
-
-" Get true colours in terminal
-set t_8f= "\<Esc>[38;2;%lu;%lu;%lum" " set foreground color
-set t_8b= "\<Esc>[48;2;%lu;%lu;%lum" " set background color
-set t_Co=256                         " Enable 256 colors
-set termguicolors                    " Enable GUI colors for the terminal to get truecolor
-" colorscheme base16-classic-light
-
 function SetColourScheme()
     let cs = "deus"
     let b16_theme_file = $HOME . "/.local/share/b16_theme/current_theme"
@@ -37,69 +21,42 @@ set cul
 set hlsearch
 set ignorecase
 set incsearch
-" Stop CtrlP searching for unwanted files
-set wildignore+=*.png,*.jpg,*.gif
-set wildignore+=*.pyc
-set wildignore+=*.beam
-set wildignore+=*.class
-set wildignore+=*.olean
-set wildignore+=*.blg,*.bbl,*.out,*.log,*.aux,*.pdf,*.toc,*.bcf,*.run.xml,*.lof
-set wildignore+=*.snm,*.nav,*.synctex.gz
-set wildignore+=*/venv/*
-set wildignore+=*/conda/*
-set wildignore+=*/node_modules/*
-set wildignore+=*/lean/_target/*
-set wildignore+=*.hi,*.o,*.dyn_hi,*.dyn_o
-set wildignore+=*/_build/*
-let g:ctrlp_custom_ignore = ''
 
-" Show normal mode commands as they are typed
-set showcmd
+" TODO: remove if no longer using CtrlP
+" " Stop CtrlP searching for unwanted files
+" set wildignore+=*.png,*.jpg,*.gif
+" set wildignore+=*.pyc
+" set wildignore+=*.beam
+" set wildignore+=*.class
+" set wildignore+=*.olean
+" set wildignore+=*.blg,*.bbl,*.out,*.log,*.aux,*.pdf,*.toc,*.bcf,*.run.xml,*.lof
+" set wildignore+=*.snm,*.nav,*.synctex.gz
+" set wildignore+=*/venv/*
+" set wildignore+=*/conda/*
+" set wildignore+=*/node_modules/*
+" set wildignore+=*/lean/_target/*
+" set wildignore+=*.hi,*.o,*.dyn_hi,*.dyn_o
+" set wildignore+=*/_build/*
+" let g:ctrlp_custom_ignore = ''
 
-" Allow backspacing over anything in insert mode
-set backspace=indent,eol,start
-
-" Clear search results with Esc
-noremap <silent><esc> :noh<CR>
-noremap <esc>[ <esc>[
+" " Always start CtrlP in current directory
+" let g:ctrlp_working_path_mode = '0'
 
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
-" Always start CtrlP in current directory
-let g:ctrlp_working_path_mode = '0'
-
-" HTML tag completion in Markdown files
-let g:closetag_filenames = '*.html,*.xhtml,*.md'
-
 " Tab settings
 set expandtab
-set shiftwidth=4
 set tabstop=4
-set softtabstop=4
+set shiftwidth=0    " use same value as tabstop
+set softtabstop=-1  " ditto
 set autoindent
 
 " Remove trailing whitespace on save
 autocmd BufWritePre * :%s/ \+$//e
+"
+" Spell check
 autocmd BufRead     * setlocal spell spelllang=en_gb
-
-" gvim settings
-if has("gui_running")
-    " Remove scroll and toolbars
-    set guioptions-=L
-    set guioptions-=r
-    set guioptions-=m
-    set guioptions-=T
-    " Show confirmations in console instead of GUI box
-    set guioptions+=c
-
-    " Have a different font on mac and ubuntu
-    if (match(system("uname -s"), "Linux") != -1)
-        set guifont=DejaVu\ Sans\ Mono
-    else
-        set guifont=Monaco:h12
-    endif
-endif
 
 " Custom mappings
 
@@ -152,13 +109,10 @@ vnoremap q "jy/<C-r>j<CR>N
 " Search for selection and start editing (repeat with n and .)
 vmap Q qcgn
 
+" Typo avoidance
 noremap :W :w
 noremap :Q :q
 noremap :BD :bd
-" for :call
-noremap :C :c
-" for :set
-noremap :S :s
 
 " LaTeX editing mappings
 " Italics and bold with Ctrl-I and Ctrl-B in visual and insert mode
@@ -190,7 +144,7 @@ let g:gitgutter_diff_args = "-w"
 " is more responsive
 set updatetime=200
 
-let g:markdown_enable_mappings = 1
+" Functions
 
 " Settings useful for writing plain text files
 function WriteText()
@@ -242,24 +196,6 @@ function! CompileLatexDocument(prog)
     endif
 endfunction
 
-" Conceals in vim-notes cause lines to wobble when
-" you scroll over them...
-let g:notes_conceal_italic=0
-let g:notes_conceal_bold=0
-
-function! JumpOkular()
-    let thisfile = expand("%")
-    let pdfname = expand("%:r")
-    let line = line(".")
-
-    " If 'main.tex' exists, jump to 'main.pdf' instead
-    if filereadable("main.tex")
-        let pdfname = "main"
-    endif
-
-    execute "! okular --unique '" . pdfname . ".pdf\\#src:" . line . " " . thisfile . "'"
-endfunction
-
 " Function to create a new tab, lcd to somewhere, and rename the tab (using
 " taboo.vim)
 function! NewTabFunction(path)
@@ -297,15 +233,6 @@ function! StartEndLog()
     endif
 endfunction
 
-function! SwitchToBuffer(name, line, column)
-    let n = bufnr(a:name)
-    if n != -1
-        exec "buffer" n
-        exec a:line
-        exec "normal " . a:column . "|"
-    endif
-endfunction
-
 function! Make()
     let f = expand("%:p")
     write
@@ -318,12 +245,6 @@ function! Make()
     endif
 endfunction
 
-" Abbreviations
-abbreviate definit def __init__(self,<Space>)
-abbreviate ifnmain if __name__ == "__main__":<CR>  <Space>
-abbreviate aximo axiom
-abbreviate aximos axioms
-
 " Leader mappings
 
 " noremap <Leader>b :call CompileLatexDocument("bibtex")<CR>
@@ -331,12 +252,9 @@ noremap <Leader>c :call CompileLatexDocument("pdflatex")<CR>
 noremap <Leader>b :w<CR>:!make bib<CR>
 noremap <Leader>e :call BeginLatexEnvironment()<CR>
 noremap <Leader>f gwap
-noremap <Leader>j :call JumpOkular()<CR>
 noremap <Leader>l :call StartEndLog()<CR>
 noremap <Leader>m :call Make()<CR>
-noremap <Leader>n i\footnotemark{}<Esc>}O<CR>\footnotetext{<CR>}<Esc>O<Tab>
 noremap <Leader>s :call SetColourScheme()<CR>
 noremap <Leader>u :call Underline()<CR>
-noremap <Leader>v :call CompileLatexDocument("xelatex")<CR>
-noremap <Leader>w :write !detex \| wc -w<CR>
+" Strikethough a like
 noremap <Leader>x :s/./&̶/g<CR>:noh<CR>
