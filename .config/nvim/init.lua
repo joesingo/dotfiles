@@ -6,23 +6,6 @@ vim.cmd([[
 -- plugin configuration, using packer
 require("plugins")
 
--- telescope bindings and configuration
-require("telescope").setup{
-    defaults = {
-        preview = false,
-        mappings = {
-            i = {
-                ["<C-j>"] = "move_selection_next",
-                ["<C-k>"] = "move_selection_previous",
-                ["<Esc>"] = "close",
-            }
-        }
-    }
-}
-local tel = require("telescope.builtin")
-vim.keymap.set("n", "<C-p>", tel.find_files, {})
-vim.keymap.set("n", "<C-x>", tel.lsp_document_symbols, {})
-
 -- LSP configuration. the following is adapted from the nvim-lspconfig README
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
@@ -44,7 +27,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, bufopts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<space>d', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
@@ -61,4 +44,22 @@ lspconfig.pylsp.setup{
 -- javascript LSP
 lspconfig.tsserver.setup{
     on_attach = on_attach
+}
+
+-- clang
+lspconfig.clangd.setup{
+    cmd = { "clangd-12" },
+    filetypes = { "c", "cpp" },
+    on_attach = on_attach
+}
+
+-- rust
+lspconfig.rust_analyzer.setup{
+    on_attach = on_attach
+}
+
+-- vue
+lspconfig.volar.setup{
+  filetypes = {'vue'},
+  on_attach = on_attach
 }

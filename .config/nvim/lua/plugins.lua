@@ -10,9 +10,5 @@ return require("packer").startup(function(use)
     use "tpope/vim-surround"
     use "justinmk/vim-sneak"
     use "neovim/nvim-lspconfig"
-    use {
-        "nvim-telescope/telescope.nvim",
-        tag = "0.1.0",
-        requires = { {"nvim-lua/plenary.nvim" } }
-    }
+    use "ctrlpvim/ctrlp.vim"
 end)

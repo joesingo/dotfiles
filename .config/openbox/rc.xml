@@ -550,6 +550,7 @@
         <then>
           <action name="MoveResizeTo">
             <monitor>1</monitor>
+            <x>0</x>
           </action>
         </then>
       </action>

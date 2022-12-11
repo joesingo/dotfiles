@@ -1,4 +1,4 @@
-theme = "monokai_pro_ristretto"
+theme = "base16-materia"
 
 [editor]
 rulers = [79, 99]
@@ -16,7 +16,7 @@ render = true
 [keys.normal]
 C-p = "file_picker"
 C-x = "buffer_picker"
-C-l = "workspace_symbol_picker"
+C-l = "symbol_picker"
 C-k = "scroll_up"
 C-j = "scroll_down"
 "}" = "goto_next_paragraph"

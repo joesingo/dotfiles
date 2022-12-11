@@ -6,35 +6,36 @@ FullScreen=false
 
 [MainWindow]
 Height 1080=1048
+Height 1440=1408
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAB4AAAAQZAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAABP4AAAWAAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 Width 1920=958
+Width 2560=1278
 Window-Maximized 1050x1680=true
-Window-Maximized 1080x1920=true
 Window-Maximized 1920x1080=true
 
 [Recent Files]
-File1[$e]=$HOME/p/teaching/group-project/group11/individual-reports/jack.pdf
-File10[$e]=/usr/share/texlive/texmf-dist/doc/latex/latex-doc-ptr/latex-doc-ptr.pdf
-File2[$e]=$HOME/p/teaching/group-project/group11/individual-reports/jiaxuan.pdf
-File3[$e]=$HOME/p/teaching/group-project/group11/individual-reports/joe.pdf
-File4[$e]=$HOME/p/teaching/group-project/group11/individual-reports/randell.pdf
-File5[$e]=$HOME/p/teaching/group-project/group2/individual-reports/salman.pdf
-File6[$e]=$HOME/p/teaching/group-project/group11/individual-reports/fred.pdf
-File7[$e]=$HOME/p/teaching/group-project/group11/individual-reports/james.pdf
-File8[$e]=$HOME/a/journal-version/journalversion.pdf
-File9[$e]=/usr/share/texlive/texmf-dist/doc/latex/natbib/natbib.pdf
-Name1[$e]=jack.pdf
-Name10[$e]=latex-doc-ptr.pdf
-Name2[$e]=jiaxuan.pdf
-Name3[$e]=joe.pdf
-Name4[$e]=randell.pdf
-Name5[$e]=salman.pdf
-Name6[$e]=fred.pdf
-Name7[$e]=james.pdf
-Name8[$e]=journalversion.pdf
-Name9[$e]=natbib.pdf
+File1[$e]=$HOME/p/papers/pdf/trust_as_a_precursor_to_belief_revision.pdf
+File10[$e]=$HOME/p/papers/pdf/a_logical_language_for_computational_trust.pdf
+File2[$e]=$HOME/p/papers/pdf/solving_conflicts_in_information_merging_by_a_flexible_interpretation_of_atomic_propositions.pdf
+File3[$e]=/usr/share/texlive/texmf-dist/doc/latex/memoir/memman.pdf
+File4[$e]=$HOME/t/submission/orca.pdf
+File5[$e]=$HOME/p/mypapers/thesis/submission/orca-signed.pdf
+File6[$e]=$HOME/t/thesis.pdf
+File7[$e]=$HOME/p/papers/pdf/knowing_ones_limits_logical_analysis_of_inductive_inference.pdf
+File8[$e]=$HOME/p/papers/pdf/evidence_in_epistemic_logic__a_topological_perspective.pdf
+File9[$e]=$HOME/p/papers/pdf/trust_networks_for_recommender_systems.pdf
+Name1[$e]=trust_as_a_precursor_to_belief_revision.pdf
+Name10[$e]=a_logical_language_for_computational_trust.pdf
+Name2[$e]=solving_conflicts_in_information_merging_by_a_flexible_interpretation_of_atomic_propositions.pdf
+Name3[$e]=memman.pdf
+Name4[$e]=orca.pdf
+Name5[$e]=orca-signed.pdf
+Name6[$e]=thesis.pdf
+Name7[$e]=knowing_ones_limits_logical_analysis_of_inductive_inference.pdf
+Name8[$e]=evidence_in_epistemic_logic__a_topological_perspective.pdf
+Name9[$e]=trust_networks_for_recommender_systems.pdf
 
 [Shortcut Schemes]
 Current Scheme=Default

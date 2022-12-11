@@ -9,7 +9,7 @@ ad=""
 interval=1
 
 while true; do
-    if playerctl -p spotify metadata | grep spotify:ad; then
+    if playerctl -p spotify metadata mpris:trackid | grep "/com/spotify/ad"; then
         temp="$playing"
     else
         temp=""

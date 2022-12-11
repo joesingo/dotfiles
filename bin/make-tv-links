@@ -8,7 +8,7 @@ def main():
     here = Path(".")
     series = None
     links: Dict[Path, Path] = {}
-    episode_regex = re.compile(r".*S(?P<series>\d+)E(?P<episode>\d+).*")
+    episode_regex = re.compile(r".*S(?P<series>\d+)E(?P<episode>\d+).*\.mkv")
     for episode in here.iterdir():
         match = episode_regex.match(episode.name)
         if not match:

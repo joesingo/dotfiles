@@ -7,4 +7,4 @@ cat > "$script" <<EOF
 i${dig}0"+y$:q!
 EOF
 
-nvim -s "$script"
+vim -s "$script"

@@ -22,25 +22,26 @@ set hlsearch
 set ignorecase
 set incsearch
 
-" TODO: remove if no longer using CtrlP
-" " Stop CtrlP searching for unwanted files
-" set wildignore+=*.png,*.jpg,*.gif
-" set wildignore+=*.pyc
-" set wildignore+=*.beam
-" set wildignore+=*.class
-" set wildignore+=*.olean
-" set wildignore+=*.blg,*.bbl,*.out,*.log,*.aux,*.pdf,*.toc,*.bcf,*.run.xml,*.lof
-" set wildignore+=*.snm,*.nav,*.synctex.gz
-" set wildignore+=*/venv/*
-" set wildignore+=*/conda/*
-" set wildignore+=*/node_modules/*
-" set wildignore+=*/lean/_target/*
-" set wildignore+=*.hi,*.o,*.dyn_hi,*.dyn_o
-" set wildignore+=*/_build/*
-" let g:ctrlp_custom_ignore = ''
+" Stop CtrlP searching for unwanted files
+set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.pyc
+set wildignore+=*.beam
+set wildignore+=*.class
+set wildignore+=*.olean
+set wildignore+=*.blg,*.bbl,*.out,*.log,*.aux,*.pdf,*.toc,*.bcf,*.run.xml,*.lof
+set wildignore+=*.snm,*.nav,*.synctex.gz
+set wildignore+=*/venv/*
+set wildignore+=*/conda/*
+set wildignore+=*/node_modules/*
+set wildignore+=*/lean/_target/*
+set wildignore+=*.hi,*.o,*.dyn_hi,*.dyn_o
+set wildignore+=*/_build/*
+set wildignore+=*/_build/*
+set wildignore+=*/target/debug/*,*/target/CACHEDIR.TAG
+let g:ctrlp_custom_ignore = ''
 
-" " Always start CtrlP in current directory
-" let g:ctrlp_working_path_mode = '0'
+" Always start CtrlP in current directory
+let g:ctrlp_working_path_mode = '0'
 
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
