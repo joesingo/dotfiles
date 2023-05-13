@@ -1,7 +1,7 @@
 export PS1="\[\e[1;91m\]\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w\[\e[0m\]$ "
 export LESS="-iR"
 export PATH="~/bin:~/.elan/bin:/usr/local/go/bin:/home/joe/.nimble/bin:/usr/local/texlive/2022/bin/x86_64-linux:${PATH}"
-export EDITOR="~/coding/apps/nvim/nvim.appimage"
+export EDITOR="nvim"
 
 alias ll="ls -l"
 alias la="ls -a"
@@ -157,16 +157,17 @@ kitty_colorscheme() {
     theme_name=$(echo "$name" | sed 's,^\./,,; s,\.conf$,,')
     echo "$theme_name" > "$state_dir/current_theme"
 
-    # Edit helix config
-    helix_config=~/.config/helix/config.toml
-    if [[ -f $helix_config ]]; then
-        sed -i 's/^theme = ".*$/theme = "'"$theme_name"'"/' 
-    fi
+    # # Edit helix config
+    # helix_config=~/.config/helix/config.toml
+    # if [[ -f $helix_config ]]; then
+    #     sed -i 's/^theme = ".*$/theme = "'"$theme_name"'"/'
+    # fi
 
 }
-[ -f "/home/joe/.ghcup/env" ] && source "/home/joe/.ghcup/env" # ghcup-env
+
+# [ -f "/home/joe/.ghcup/env" ] && source "/home/joe/.ghcup/env" # ghcup-env
 . "$HOME/.cargo/env"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

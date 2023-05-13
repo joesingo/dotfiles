@@ -63,3 +63,16 @@ lspconfig.volar.setup{
   filetypes = {'vue'},
   on_attach = on_attach
 }
+
+-- haskell
+lspconfig.hls.setup{
+  on_attach = on_attach
+}
+
+-- lean
+require('lean').setup{
+  abbreviations = { builtin = true },
+  lsp = { on_attach = on_attach },
+  lsp3 = { on_attach = on_attach },
+  mappings = true,
+}

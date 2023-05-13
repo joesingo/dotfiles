@@ -11,4 +11,6 @@ return require("packer").startup(function(use)
     use "justinmk/vim-sneak"
     use "neovim/nvim-lspconfig"
     use "ctrlpvim/ctrlp.vim"
+    use "nvim-lua/plenary.nvim"
+    use "Julian/lean.nvim"
 end)

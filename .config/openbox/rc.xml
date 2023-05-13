@@ -31,7 +31,7 @@
   </placement>
   <theme>
     <name>Nightmare</name>
-    <titleLayout>NLMCI</titleLayout>
+    <titleLayout>NLC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
       N: window icon
@@ -1096,6 +1096,9 @@
       <!-- Start terminals maximised. Note that window can still be resized
            afterwards -->
       <maximized>yes</maximized>
+    </application>
+    <application groupname="reaper">
+        <decor>yes</decor>
     </application>
     <!-- Popup terminal to run window switcher script -->
     <application title="window_switcher_popup">
