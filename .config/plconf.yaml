@@ -1,0 +1,2 @@
+storage_dir: ~/p/papers
+search_command: fzf --preview 'echo {}' --preview-window up:10%:wrap
