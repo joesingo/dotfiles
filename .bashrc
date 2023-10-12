@@ -1,6 +1,6 @@
 export PS1="\[\e[1;91m\]\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w\[\e[0m\]$ "
 export LESS="-iR"
-export PATH="~/bin:~/.elan/bin:/usr/local/go/bin:/home/joe/.nimble/bin:/usr/local/texlive/2022/bin/x86_64-linux:${PATH}"
+export PATH="~/bin:~/.local/bin:~/.elan/bin:/usr/local/go/bin:/home/joe/.nimble/bin:/usr/local/texlive/2022/bin/x86_64-linux:${PATH}"
 export EDITOR="nvim"
 
 alias ll="ls -l"
@@ -164,10 +164,4 @@ kitty_colorscheme() {
     # fi
 
 }
-
-# [ -f "/home/joe/.ghcup/env" ] && source "/home/joe/.ghcup/env" # ghcup-env
 . "$HOME/.cargo/env"
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -13,4 +13,5 @@ return require("packer").startup(function(use)
     use "ctrlpvim/ctrlp.vim"
     use "nvim-lua/plenary.nvim"
     use "Julian/lean.nvim"
+    use "jose-elias-alvarez/null-ls.nvim"
 end)

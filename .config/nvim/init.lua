@@ -36,7 +36,17 @@ end
 
 -- python LSP
 local lspconfig = require 'lspconfig'
-lspconfig.pylsp.setup{
+-- lspconfig.pylsp.setup{
+--     on_attach = on_attach,
+--     root_dir = lspconfig.util.find_git_ancestor
+-- }
+lspconfig.pyright.setup{
+    on_attach = on_attach,
+    root_dir = lspconfig.util.find_git_ancestor
+}
+
+-- ruff LSP (python linter)
+lspconfig.ruff_lsp.setup{
     on_attach = on_attach,
     root_dir = lspconfig.util.find_git_ancestor
 }
@@ -76,3 +86,11 @@ require('lean').setup{
   lsp3 = { on_attach = on_attach },
   mappings = true,
 }
+
+-- null lsp
+local null_ls = require 'null-ls'
+null_ls.setup({
+    sources = {
+        null_ls.builtins.formatting.black,
+    }
+})
