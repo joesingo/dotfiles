@@ -1,5 +1,0 @@
-set from = "singletonj1@cardiff.ac.uk"
-set spoolfile = "+cardiff/inbox"
-unset record
-set postponed = "+cardiff/drafts"
-set sendmail = "/usr/bin/msmtp -a cardiff"
