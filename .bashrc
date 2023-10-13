@@ -164,4 +164,3 @@ kitty_colorscheme() {
     # fi
 
 }
-. "$HOME/.cargo/env"
