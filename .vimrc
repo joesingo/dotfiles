@@ -1,5 +1,5 @@
 function SetColourScheme()
-    let cs = "deus"
+    let cs = "default"
     let b16_theme_file = $HOME . "/.local/share/b16_theme/current_theme"
     if filereadable(b16_theme_file)
         let cs = readfile(b16_theme_file)[0]
