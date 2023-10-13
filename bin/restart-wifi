@@ -1,4 +1,0 @@
-#!/bin/bash
-modprobe -r rtl8723be
-sleep 1
-modprobe rtl8723be

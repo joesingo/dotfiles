@@ -1,3 +1,0 @@
-#!/bin/bash
-file="$(find ~ -type f -name "*.pdf" | fzf)"
-[[ -n $file ]] && okular "$file"
