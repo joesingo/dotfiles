@@ -1,0 +1,9 @@
+#!/bin/bash
+# Take a screenshot (with region selected by mouse) and copy to clipboard
+maim -s | xclip -selection clipboard -t image/png
+
+# Previous version which saved to disk instead... Retaining in case it's useful
+# someday
+# dest=~/pictures/screenshots/$(date --iso-8601=seconds).png
+# maim -s > "$tmp" && cp "$tmp" "$dest"
+# rm "$tmp"

@@ -191,48 +191,16 @@
         <wrap>no</wrap>
       </action>
     </keybind> -->
-    <keybind key="S-A-Left">
+    <keybind key="S-A-h">
       <action name="SendToDesktop">
         <to>left</to>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="S-A-Right">
+    <keybind key="S-A-l">
       <action name="SendToDesktop">
         <to>right</to>
         <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="S-A-Up">
-      <action name="SendToDesktop">
-        <to>up</to>
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="S-A-Down">
-      <action name="SendToDesktop">
-        <to>down</to>
-        <wrap>no</wrap>
-      </action>
-    </keybind>
-    <keybind key="W-F1">
-      <action name="GoToDesktop">
-        <to>1</to>
-      </action>
-    </keybind>
-    <keybind key="W-F2">
-      <action name="GoToDesktop">
-        <to>2</to>
-      </action>
-    </keybind>
-    <keybind key="W-F3">
-      <action name="GoToDesktop">
-        <to>3</to>
-      </action>
-    </keybind>
-    <keybind key="W-F4">
-      <action name="GoToDesktop">
-        <to>4</to>
       </action>
     </keybind>
     <keybind key="W-d">
@@ -258,26 +226,7 @@
     <!-- Keybinding to show menu -->
     <keybind key="W-space">
       <action name="Execute">
-        <!-- <command>xfce4-popup-whiskermenu</command> -->
         <command>dmenu_run -h 30</command>
-      </action>
-    </keybind>
-    <!-- Take a screenshot when Print is pressed -->
-    <keybind key="Print">
-      <action name="Execute">
-        <command>xfce4-screenshooter -f</command>
-      </action>
-    </keybind>
-    <!-- Take a screenshot of the current window when Alt+Print are pressed -->
-    <keybind key="A-Print">
-      <action name="Execute">
-        <command>xfce4-screenshooter -w</command>
-      </action>
-    </keybind>
-    <!-- Take a screenshot of region when Shift+Print is pressed -->
-    <keybind key="S-Print">
-      <action name="Execute">
-        <command>xfce4-screenshooter -r</command>
       </action>
     </keybind>
     <!-- Keybindings for window switching -->
@@ -388,15 +337,7 @@
     </keybind>
     <keybind key="W-w">
       <action name="Execute">
-        <!-- stupid XML does not allow <hyphen><hyphen> in comments, so be sure
-        to add them to the qutebrowser options below if uncommenting -->
-        <!-- <command>qutebrowser debug enable-webengine-inspector</command> -->
-        <command>/home/joe/coding/apps/surf/surf-open.sh</command>
-      </action>
-    </keybind>
-    <keybind key="W-S-w">
-      <action name="Execute">
-        <command>google-chrome --remote-debugging-port=1234</command>
+        <command>google-chrome</command>
       </action>
     </keybind>
     <keybind key="W-m">
@@ -405,19 +346,9 @@
       </action>
       <action name="Maximize"/>
     </keybind>
-    <keybind key="W-b">
-      <action name="Execute">
-        <command>toggle-bluetooth</command>
-      </action>
-    </keybind>
     <keybind key="W-S-b">
       <action name="Execute">
         <command>blueman-manager</command>
-      </action>
-    </keybind>
-    <keybind key="C-A-w">
-      <action name="Execute">
-        <command>sudo restart-wifi</command>
       </action>
     </keybind>
     <keybind key="C-S-Escape">
@@ -515,7 +446,7 @@
       <action name="Focus"/>
       <action name="Raise"/>
     </keybind>
-    <!-- Maximise window left/righ -->
+    <!-- Maximise window left/right -->
     <keybind key="W-S-h">
       <action name="GrowToEdge">
         <direction>west</direction>
@@ -536,39 +467,6 @@
     <keybind key="C-W-l">
       <action name="MoveResizeTo">
         <monitor>next</monitor>
-      </action>
-    </keybind>
-    <!-- Move ALL windows to monitor and enable monitor-->
-    <keybind key="W-s">
-      <action name="Execute">
-        <command>monitor-ctl enable</command>
-      </action>
-      <action name="ForEach">
-        <query>
-          <monitor>2</monitor>
-        </query>
-        <then>
-          <action name="MoveResizeTo">
-            <monitor>1</monitor>
-            <x>0</x>
-          </action>
-        </then>
-      </action>
-    </keybind>
-    <!-- Move ALL windows to laptop and disable monitor  -->
-    <keybind key="W-S-s">
-      <action name="Execute">
-        <command>monitor-ctl disable</command>
-      </action>
-      <action name="ForEach">
-        <query>
-          <monitor>1</monitor>
-        </query>
-        <then>
-          <action name="MoveResizeTo">
-            <monitor>2</monitor>
-          </action>
-        </then>
       </action>
     </keybind>
     <keybind key="W-l">
@@ -629,6 +527,12 @@
         <y>0</y>
         <height>100%</height>
         <width>50%</width>
+      </action>
+    </keybind>
+    <!-- Take a screenshot -->
+    <keybind key="W-S-s">
+      <action name="Execute">
+          <command>take-screenshot</command>
       </action>
     </keybind>
   </keyboard>
@@ -1098,7 +1002,7 @@
       <maximized>yes</maximized>
     </application>
     <application groupname="reaper">
-        <decor>yes</decor>
+      <decor>yes</decor>
     </application>
     <!-- Popup terminal to run window switcher script -->
     <application title="window_switcher_popup">
