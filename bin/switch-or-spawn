@@ -1,0 +1,22 @@
+#!/bin/bash
+# Switch to a window with the given WM_CLASS name using wmctrl, or launch a
+# program if no such window could be found
+
+usage() {
+    echo "usage: $0 WM_CLASS PROG [ARGS]"
+}
+
+class="$1"
+shift
+prog="$1"
+shift
+
+if [[ $class = "-h" ]] || [[ $class = "--help" ]]; then
+    usage
+    exit 0
+elif [[ -z $class ]] || [[ -z $prog ]]; then
+    usage >&2
+    exit 1
+fi
+
+wmctrl -x -a "$class" || $prog $@

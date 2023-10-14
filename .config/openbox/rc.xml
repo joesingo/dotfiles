@@ -312,6 +312,11 @@
     </keybind>
     <keybind key="W-t">
       <action name="Execute">
+        <command>switch-or-spawn kitty.kitty kitty</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-t">
+      <action name="Execute">
         <command>kitty</command>
       </action>
     </keybind>
@@ -336,6 +341,11 @@
       </action>
     </keybind>
     <keybind key="W-w">
+      <action name="Execute">
+        <command>switch-or-spawn google-chrome.Google-chrome google-chrome</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-w">
       <action name="Execute">
         <command>google-chrome</command>
       </action>
