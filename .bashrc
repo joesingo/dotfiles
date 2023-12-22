@@ -19,6 +19,7 @@ alias screenrecord="ffmpeg -f pulse -ac 2 -i default -f x11grab -framerate 30 -v
 alias nfcserver="~/coding/nfc_handler/venv/bin/python ~/coding/nfc_handler/server.py"
 alias gpom="git push origin master"
 alias vlc="vlc -V x11"
+alias writelog="vim ~/documents/log/log.md \"+norm Gzz\" \"+call WriteText()\" \"+call LogEntry()\""
 
 # Tab-completions for kitty terminal
 source <(kitty + complete setup bash)
@@ -164,3 +165,4 @@ kitty_colorscheme() {
     # fi
 
 }
+. "$HOME/.cargo/env"

@@ -352,7 +352,7 @@
     </keybind>
     <keybind key="W-m">
       <action name="Execute">
-        <command>spotify</command>
+        <command>switch-or-spawn spotify.Spotify spotify</command>
       </action>
       <action name="Maximize"/>
     </keybind>
