@@ -5,7 +5,6 @@ plugin_dir=~/.vim/bundle
 
 repos=("https://github.com/airblade/vim-gitgutter"
 "https://github.com/ajmwagar/vim-deus"
-"https://github.com/nightsense/office"
 "https://github.com/ctrlpvim/ctrlp.vim"
 "https://github.com/scrooloose/nerdtree"
 "https://github.com/tpope/vim-commentary"

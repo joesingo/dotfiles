@@ -22,25 +22,33 @@ set hlsearch
 set ignorecase
 set incsearch
 
-" TODO: remove if no longer using CtrlP
-" " Stop CtrlP searching for unwanted files
-" set wildignore+=*.png,*.jpg,*.gif
-" set wildignore+=*.pyc
-" set wildignore+=*.beam
-" set wildignore+=*.class
-" set wildignore+=*.olean
-" set wildignore+=*.blg,*.bbl,*.out,*.log,*.aux,*.pdf,*.toc,*.bcf,*.run.xml,*.lof
-" set wildignore+=*.snm,*.nav,*.synctex.gz
-" set wildignore+=*/venv/*
-" set wildignore+=*/conda/*
-" set wildignore+=*/node_modules/*
-" set wildignore+=*/lean/_target/*
-" set wildignore+=*.hi,*.o,*.dyn_hi,*.dyn_o
-" set wildignore+=*/_build/*
-" let g:ctrlp_custom_ignore = ''
+" Stop CtrlP searching for unwanted files
+set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.pyc
+set wildignore+=*.beam
+set wildignore+=*.class
+set wildignore+=*.olean
+set wildignore+=*.blg,*.bbl,*.out,*.log,*.aux,*.pdf,*.toc,*.bcf,*.run.xml,*.lof
+set wildignore+=*.snm,*.nav,*.synctex.gz
+set wildignore+=*/venv/*
+set wildignore+=*/conda/*
+set wildignore+=*/node_modules/*
+set wildignore+=*/lean/_target/*
+set wildignore+=*.hi,*.o,*.dyn_hi,*.dyn_o
+set wildignore+=*/_build/*
+set wildignore+=*/JUCE/*
+set wildignore+=*/json/*
+set wildignore+=*/mongoose/*
+set wildignore+=*/curl-*/*
+set wildignore+=*/CMakeFiles/*
+set wildignore+=CMakeCache.txt
+set wildignore+=*/VisualStudio2022/*
+set wildignore+=/home/js/code/telesoft/telesoft/build/*
+let g:ctrlp_custom_ignore = ''
+let g:ctrlp_extensions = ['tag']
 
-" " Always start CtrlP in current directory
-" let g:ctrlp_working_path_mode = '0'
+" Always start CtrlP in current directory
+let g:ctrlp_working_path_mode = '0'
 
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
@@ -92,6 +100,9 @@ function! CreateVariable()
     elseif &filetype == "erlang"
         exe 'normal O' . var_name . ' = '
         normal "jpA,
+    elseif &filetype == "cpp"
+        exe 'normal Oauto ' . var_name . ' = '
+        normal "jpA;
     else
         " Note: same as python for now
         exe 'normal O' . var_name . ' = '
@@ -139,6 +150,9 @@ let g:surround_123 = "{\r}"
 " No point showing whitespace changes in gutter as it makes
 " it hard to see actual changes
 let g:gitgutter_diff_args = "-w"
+
+" Use syntax highlighting for fenced blocks in markdown
+let g:markdown_fenced_languages = ['html', 'javascript', 'bash=sh', 'python']
 
 " updatetime is used by GitGutter plugin: make short so that it
 " is more responsive
@@ -226,11 +240,7 @@ endfunction
 function! StartEndLog()
     let line = getline(".")
     let time = substitute(system("date '+\%H:\%M'"), "\\n", "", "")
-    if line =~ "^\- \\d\\d:\\d\\d - \?:.*"
-        exe "normal 0f?cl" . time
-    else
-        exe "normal o- " . time . " - ?:"
-    endif
+    exe "normal o- " . time . ":"
 endfunction
 
 function! Make()
