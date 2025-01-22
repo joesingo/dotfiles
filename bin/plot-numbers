@@ -1,0 +1,29 @@
+#!/home/js/code/rode/rcv/venv/bin/python
+import argparse
+import sys
+
+import matplotlib.pyplot as plt
+
+parser = argparse.ArgumentParser(description="Read numbers from stdin (one per line) and show an interactive plot")
+parser.add_argument("-t", metavar="TITLE", help="Title")
+parser.add_argument("-x", metavar="LABEL", help="Horizontal axis label")
+parser.add_argument("-y", metavar="LABEL", help="Vertical axis label")
+args = parser.parse_args()
+
+values = []
+for line in sys.stdin.readlines():
+    try:
+        val = float(line.strip())
+    except ValueError:
+        print(f"Non-numeric input: '{line.strip()}'")
+        continue
+    values.append(val)
+
+plt.plot(values)
+if args.t:
+    plt.title(args.t)
+if args.x:
+    plt.xlabel(args.x)
+if args.y:
+    plt.ylabel(args.y)
+plt.show()
